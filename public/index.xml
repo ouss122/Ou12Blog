@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Ou12</title>
-    <link>http://localhost:1313/</link>
+    <link>http://localhost:41913/</link>
     <description>Recent content on Ou12</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <managingEditor>me@example.com (John Doe)</managingEditor>
     <webMaster>me@example.com (John Doe)</webMaster>
     <lastBuildDate>Mon, 01 Sep 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:41913/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Contradiction, Contraposition and Lean</title>
-      <link>http://localhost:1313/blog/contradiction-contraposition-and-lean/</link>
+      <link>http://localhost:41913/blog/contradiction-contraposition-and-lean/</link>
       <pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate><author>me@example.com (John Doe)</author>
-      <guid>http://localhost:1313/blog/contradiction-contraposition-and-lean/</guid>
+      <guid>http://localhost:41913/blog/contradiction-contraposition-and-lean/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;There is nothing better in Math then the joy of proving a theorem but believe me proving it with &lt;strong&gt;Lean&lt;/strong&gt; is just another level.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Lean&lt;/strong&gt; is proof assistant programming language (also known as interactive theorem provers ) that help us to write &amp;ldquo;correct&amp;rdquo; proofs by :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Checking and Pointing out any mistake in our proof&lt;/li&gt;&#xA;&lt;li&gt;Giving useful hints and suggestions when needed&lt;/li&gt;&#xA;&lt;li&gt;Displaying the current &lt;em&gt;goal(s)&lt;/em&gt; (what we need to prove) and our &lt;em&gt;hypotheses&lt;/em&gt; (What we know) in real time&lt;/li&gt;&#xA;&lt;li&gt;The huge &lt;em&gt;Mathlib&lt;/em&gt; library containing thousands of theorems proved by other mathematicians that we can easily use and apply in our proof&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;You might hear the sentence &amp;ldquo;formalizing a proof with lean&amp;rdquo; which mean converting a classic pen and paper proof into a proof written in formal language which is &lt;strong&gt;Lean&lt;/strong&gt; in our case&lt;/p&gt;</description>
       <content:encoded><![CDATA[<h1 id="introduction">Introduction</h1>
 <p>There is nothing better in Math then the joy of proving a theorem but believe me proving it with <strong>Lean</strong> is just another level.</p>
@@ -98,9 +98,9 @@ which is the definition of odd number that mean $n^2$ is odd number</p>
     </item>
     <item>
       <title>Math Typesetting - use Mathematical notation in blog posts</title>
-      <link>http://localhost:1313/blog/math-typesetting/</link>
+      <link>http://localhost:41913/blog/math-typesetting/</link>
       <pubDate>Sat, 01 Apr 2023 00:00:00 +0000</pubDate><author>me@example.com (John Doe)</author>
-      <guid>http://localhost:1313/blog/math-typesetting/</guid>
+      <guid>http://localhost:41913/blog/math-typesetting/</guid>
       <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using&#xA;&lt;a href=&#34;https://github.com/hugo-sid/hugo-blog-awesome/blob/main/layouts/partials/helpers/katex.html&#34;&gt;third party JavaScript libraries&lt;/a&gt;.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>Mathematical notation in a Hugo project can be enabled by using
 <a href="https://github.com/hugo-sid/hugo-blog-awesome/blob/main/layouts/partials/helpers/katex.html">third party JavaScript libraries</a>.</p>
@@ -184,9 +184,9 @@ $$</p>
     </item>
     <item>
       <title>Markdown Syntax Guide</title>
-      <link>http://localhost:1313/blog/markdown-syntax/</link>
+      <link>http://localhost:41913/blog/markdown-syntax/</link>
       <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate><author>me@example.com (John Doe)</author>
-      <guid>http://localhost:1313/blog/markdown-syntax/</guid>
+      <guid>http://localhost:41913/blog/markdown-syntax/</guid>
       <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.</p>
 <h2 id="headings">Headings</h2>
@@ -336,9 +336,9 @@ $$</p>
     </item>
     <item>
       <title>Rich Content</title>
-      <link>http://localhost:1313/blog/rich-content/</link>
+      <link>http://localhost:41913/blog/rich-content/</link>
       <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate><author>me@example.com (John Doe)</author>
-      <guid>http://localhost:1313/blog/rich-content/</guid>
+      <guid>http://localhost:41913/blog/rich-content/</guid>
       <description>&lt;p&gt;Hugo ships with several &lt;a href=&#34;https://gohugo.io/content-management/shortcodes/#use-hugos-built-in-shortcodes&#34;&gt;Built-in Shortcodes&lt;/a&gt; for rich content, along with a &lt;a href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34;&gt;Privacy Config&lt;/a&gt; and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>Hugo ships with several <a href="https://gohugo.io/content-management/shortcodes/#use-hugos-built-in-shortcodes">Built-in Shortcodes</a> for rich content, along with a <a href="https://gohugo.io/about/hugo-and-gdpr/">Privacy Config</a> and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.</p>
 <hr>
@@ -356,45 +356,13 @@ $$</p>
 
 <!-- raw HTML omitted -->
 <hr>
-<h2 id="vimeo-simple-shortcode">Vimeo Simple Shortcode</h2>
-<style>
-.__h_video {
-   position: relative;
-   padding-bottom: 56.23%;
-   height: 0;
-   overflow: hidden;
-   width: 100%;
-   background: #000;
-}
-.__h_video img {
-   width: 100%;
-   height: auto;
-   color: #000;
-}
-.__h_video .play {
-   height: 72px;
-   width: 72px;
-   left: 50%;
-   top: 50%;
-   margin-left: -36px;
-   margin-top: -36px;
-   position: absolute;
-   cursor: pointer;
-}
-</style><div class="s_video_simple __h_video">
-          <a href="https://vimeo.com/48912912" rel="noopener" target="_blank">
-            <img src="https://i.vimeocdn.com/video/337401969-979f0cc9f55fdf305fb8984e90d92639ec9d7ecc4c9dfbc6536e28edb43784ce-d_640?region=us" srcset="https://i.vimeocdn.com/video/337401969-979f0cc9f55fdf305fb8984e90d92639ec9d7ecc4c9dfbc6536e28edb43784ce-d_640?region=us 1x, https://i.vimeocdn.com/video/337401969-979f0cc9f55fdf305fb8984e90d92639ec9d7ecc4c9dfbc6536e28edb43784ce-d_640?region=us 2x" alt="Sing Jan Swing - Kinetic Type">
-            <div class="play">
-              <svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61 61"><circle cx="30.5" cy="30.5" r="30.5" opacity=".8" fill="#000"></circle><path d="M25.3 19.2c-2.1-1.2-3.8-.2-3.8 2.2v18.1c0 2.4 1.7 3.4 3.8 2.2l16.6-9.1c2.1-1.2 2.1-3.2 0-4.4l-16.6-9z" fill="#fff"></path></svg>
-            </div>
-          </a>
-        </div>]]></content:encoded>
+<h2 id="vimeo-simple-shortcode">Vimeo Simple Shortcode</h2>]]></content:encoded>
     </item>
     <item>
       <title>Placeholder Text</title>
-      <link>http://localhost:1313/blog/placeholder-text/</link>
+      <link>http://localhost:41913/blog/placeholder-text/</link>
       <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate><author>me@example.com (John Doe)</author>
-      <guid>http://localhost:1313/blog/placeholder-text/</guid>
+      <guid>http://localhost:41913/blog/placeholder-text/</guid>
       <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>Lorem est tota propiore conpellat pectoribus de pectora summo.</p>
 <p>Redit teque digerit hominumque toris verebor lumina non cervice subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc caluere tempus inhospita parcite confusaque translucet patri vestro qui optatis lumine cognoscere flos nubis! Fronde ipsamque patulos Dryopen deorum.</p>
@@ -422,9 +390,9 @@ $$</p>
     </item>
     <item>
       <title>Emoji Support</title>
-      <link>http://localhost:1313/blog/emoji-support/</link>
+      <link>http://localhost:41913/blog/emoji-support/</link>
       <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate><author>me@example.com (John Doe)</author>
-      <guid>http://localhost:1313/blog/emoji-support/</guid>
+      <guid>http://localhost:41913/blog/emoji-support/</guid>
       <description>&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;</description>
       <content:encoded><![CDATA[<p>Emoji can be enabled in a Hugo project in a number of ways.</p>
 <p>The <a href="https://gohugo.io/functions/emojify/"><code>emojify</code></a> function can be called directly in templates or <a href="https://gohugo.io/templates/shortcode-templates/#inline-shortcodes">Inline Shortcodes</a>.</p>

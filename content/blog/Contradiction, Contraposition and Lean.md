@@ -112,16 +112,51 @@ now let's do the same as before we suppose that $n$ is odd and we prove that $n^
 By definition of odd number we have :
 
 $$ n=2*k+1 $$
+
 We square both sides
+
 $$n^2=(2*k+1)^2$$
-we simplify the right side
+
+We simplify the right side
+
 $$n^2=4k^2+1+4k$$
-by taking 2 as a factor
+
+By taking 2 as a factor
+
 $$n^2=2(2k^2 +2k)+1$$
-let define $k'=2k^2+2k$ 
+
+Let define $k'=2k^2+2k$ 
+
 $$n^2=2k'+1$$
-which is the definition of odd number that mean $n^2$ is odd number
+
+Which is the definition of odd number that mean $n^2$ is odd number
 
 Because the contrapositive of $n^2\text{  is even } \implies n \text{ is even}$ is true , $n^2\text{  is even } \implies n \text{ is even}$ is also true
 
 ### C) Proof by Contradiction
+
+Another way to prove a theorem $P$ is by assuming that $\neg P$ is true and then find a contradiction (any result that's obviously false e.g. $0=1$ ) which confirm that $\neg P$ is definitely false so $P$ is true
+
+Let's apply it to our theorem, first we assume that the whole statement is false
+
+$$
+\neg (n^2\text{ is even} \implies {n\text{ is even}})
+$$
+
+De Morgan Law state that $\neg (P\implies Q)\iff P \land \neg Q$ (the $\iff$ symbol used to show equivalence) ,which turn our statement into:
+
+$$n^2 \text{ is even } \land n \text{ is odd} $$
+which is read as $n^2$ is even ***and*** n is odd, now that we have those two assumptions let's try to find a contradiction:
+
+like we did in the "Proof by Contrapostion" section :
+
+$$ n = 2k + 1 $$
+$$n^2 = (2k+1)^2$$
+$$ n^2 = 4k^2 +1 + 4k$$
+$$n^2=2(2k^2+2k)+1$$
+Let's define $k'=2k^2+2k$
+$$n^2=2k'+1$$
+
+We can see that $n^2$ is an odd number by definition, but our assumption say that $n^2$ is even Contradiction!!!
+
+Which prove that $\neg (n^2\text{ is even} \implies {n\text{ is even}})$ is false so "$n^2\text{ is even} \implies {n\text{ is even}}$" must be true

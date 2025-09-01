@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Lean on Ou12</title>
-    <link>http://localhost:1313/tags/lean/</link>
+    <link>http://localhost:41913/tags/lean/</link>
     <description>Recent content in Lean on Ou12</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <managingEditor>me@example.com (John Doe)</managingEditor>
     <webMaster>me@example.com (John Doe)</webMaster>
     <lastBuildDate>Mon, 01 Sep 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/lean/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:41913/tags/lean/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Contradiction, Contraposition and Lean</title>
-      <link>http://localhost:1313/blog/contradiction-contraposition-and-lean/</link>
+      <link>http://localhost:41913/blog/contradiction-contraposition-and-lean/</link>
       <pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate><author>me@example.com (John Doe)</author>
-      <guid>http://localhost:1313/blog/contradiction-contraposition-and-lean/</guid>
+      <guid>http://localhost:41913/blog/contradiction-contraposition-and-lean/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;There is nothing better in Math then the joy of proving a theorem but believe me proving it with &lt;strong&gt;Lean&lt;/strong&gt; is just another level.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Lean&lt;/strong&gt; is proof assistant programming language (also known as interactive theorem provers ) that help us to write &amp;ldquo;correct&amp;rdquo; proofs by :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Checking and Pointing out any mistake in our proof&lt;/li&gt;&#xA;&lt;li&gt;Giving useful hints and suggestions when needed&lt;/li&gt;&#xA;&lt;li&gt;Displaying the current &lt;em&gt;goal(s)&lt;/em&gt; (what we need to prove) and our &lt;em&gt;hypotheses&lt;/em&gt; (What we know) in real time&lt;/li&gt;&#xA;&lt;li&gt;The huge &lt;em&gt;Mathlib&lt;/em&gt; library containing thousands of theorems proved by other mathematicians that we can easily use and apply in our proof&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;You might hear the sentence &amp;ldquo;formalizing a proof with lean&amp;rdquo; which mean converting a classic pen and paper proof into a proof written in formal language which is &lt;strong&gt;Lean&lt;/strong&gt; in our case&lt;/p&gt;</description>
       <content:encoded><![CDATA[<h1 id="introduction">Introduction</h1>
 <p>There is nothing better in Math then the joy of proving a theorem but believe me proving it with <strong>Lean</strong> is just another level.</p>

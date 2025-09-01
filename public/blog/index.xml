@@ -82,18 +82,35 @@ $$n\text{  is odd } \implies n^2 \text{ is odd}  $$
 The negation of <code>n is even</code> is <code>n is odd</code> the same goes for $n^2$</p>
 <p>now let&rsquo;s do the same as before we suppose that $n$ is odd and we prove that $n^2$ is odd</p>
 <p>By definition of odd number we have :</p>
-<p>$$ n=2<em>k+1 $$
-We square both sides
-$$n^2=(2</em>k+1)^2$$
-we simplify the right side
-$$n^2=4k^2+1+4k$$
-by taking 2 as a factor
-$$n^2=2(2k^2 +2k)+1$$
-let define $k&rsquo;=2k^2+2k$
-$$n^2=2k&rsquo;+1$$
-which is the definition of odd number that mean $n^2$ is odd number</p>
+<p>$$ n=2*k+1 $$</p>
+<p>We square both sides</p>
+<p>$$n^2=(2*k+1)^2$$</p>
+<p>We simplify the right side</p>
+<p>$$n^2=4k^2+1+4k$$</p>
+<p>By taking 2 as a factor</p>
+<p>$$n^2=2(2k^2 +2k)+1$$</p>
+<p>Let define $k&rsquo;=2k^2+2k$</p>
+<p>$$n^2=2k&rsquo;+1$$</p>
+<p>Which is the definition of odd number that mean $n^2$ is odd number</p>
 <p>Because the contrapositive of $n^2\text{  is even } \implies n \text{ is even}$ is true , $n^2\text{  is even } \implies n \text{ is even}$ is also true</p>
 <h3 id="c-proof-by-contradiction">C) Proof by Contradiction</h3>
+<p>Another way to prove a theorem $P$ is by assuming that $\neg P$ is true and then find a contradiction (any result that&rsquo;s obviously false e.g. $0=1$ ) which confirm that $\neg P$ is definitely false so $P$ is true</p>
+<p>Let&rsquo;s apply it to our theorem, first we assume that the whole statement is false</p>
+<p>$$
+\neg (n^2\text{ is even} \implies {n\text{ is even}})
+$$</p>
+<p>De Morgan Law state that $\neg (P\implies Q)\iff P \land \neg Q$ (the $\iff$ symbol used to show equivalence) ,which turn our statement into:</p>
+<p>$$n^2 \text{ is even } \land n \text{ is odd} $$
+which is read as $n^2$ is even <em><strong>and</strong></em> n is odd, now that we have those two assumptions let&rsquo;s try to find a contradiction:</p>
+<p>like we did in the &ldquo;Proof by Contrapostion&rdquo; section :</p>
+<p>$$ n = 2k + 1 $$
+$$n^2 = (2k+1)^2$$
+$$ n^2 = 4k^2 +1 + 4k$$
+$$n^2=2(2k^2+2k)+1$$
+Let&rsquo;s define $k&rsquo;=2k^2+2k$
+$$n^2=2k&rsquo;+1$$</p>
+<p>We can see that $n^2$ is an odd number by definition, but our assumption say that $n^2$ is even Contradiction!!!</p>
+<p>Which prove that $\neg (n^2\text{ is even} \implies {n\text{ is even}})$ is false so &ldquo;$n^2\text{ is even} \implies {n\text{ is even}}$&rdquo; must be true</p>
 ]]></content:encoded>
     </item>
     <item>
