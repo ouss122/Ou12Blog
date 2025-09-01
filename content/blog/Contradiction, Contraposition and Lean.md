@@ -123,3 +123,5 @@ $$n^2=2k'+1$$
 which is the definition of odd number that mean $n^2$ is odd number
 
 Because the contrapositive of $n^2\text{  is even } \implies n \text{ is even}$ is true , $n^2\text{  is even } \implies n \text{ is even}$ is also true
+
+### C) Proof by Contradiction

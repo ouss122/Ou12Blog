@@ -32,11 +32,68 @@
 <li>And in the second part we are going to formalize those proofs with lean</li>
 </ul>
 <h1 id="part-one--introduction-to-proofs">Part One : Introduction to proofs</h1>
-<p>Our goal is to prove that : for any integer n ( $n\in\mathbb{Z}$: {&hellip;,-3,-2,-1,0,1,2,3,&hellip;} )
-$$
+<p>Our goal is to prove that : for any integer n ( $n\in\mathbb{Z}$ ) :</p>
+<p>$$
 \text{If }n^2 \text{ is even then } n \text{ is even}
 $$</p>
-<p>For example, the number 36 is even and <code>36 = 6 ^ 2</code> and indeed 6 is even</p>
+<p>We can also write the proof as the form $P\implies Q$ which is read as &ldquo;$P$ <strong><em>implies</em></strong> $Q$&rdquo; :</p>
+<p>$$n^2\text{  is even } \implies n \text{ is even}  $$</p>
+<p>Where $P$ is called <strong><em>hypothesis</em></strong> and $Q$ is called <strong><em>conclusion</em></strong> or <strong><em>consequence</em></strong>.</p>
+<p>Proving this theorem (or statement) means providing an evidence that no matter the integer n if it is fulfill the <strong><em>hypothesis</em></strong> which is $n^2$ is even then it must fulfill the <strong><em>consequence</em></strong> too</p>
+<p>Sadly we can&rsquo;t test the theorem for every number because there are an infinite of them, so we have to find another way &hellip;</p>
+<h3 id="a-direct-proof">A) Direct Proof</h3>
+<p>In this method we assume $P$ (in other words we have $P$ ) and try to prove $Q$</p>
+<p>So we assume that $n^2$ is even and try to prove that $n$ is even
+In other words:
+We assume $n^2=2k$ and prove that $n=2k&rsquo;$ where $k,k&rsquo;\in\mathbb{Z}$</p>
+<p>We know that $n^2$ is even number (from our <em>hypothesis</em> $P$) and by definition of even number we get:
+$$
+n^2=2*k
+$$
+We take the square root of both sides:</p>
+<p>$$
+n=\sqrt{2*k}
+$$</p>
+<p>Introducing the square root just make reaching our goal harder, so we should try the next method instead</p>
+<h3 id="b-proof-by-contrapositive">B) Proof by Contrapositive</h3>
+<p>If starting from the $n^2$ element to reach the $n$ element make it harder why can&rsquo;t we start from the $n$ element and climb to the $n^2$ element, and that what &ldquo;Proof by contrapositive&rdquo; is about</p>
+<p>We have a fact that say if $P\implies Q$ then it is the same as $\neg Q\implies \neg P$ , we call this statement the contrapositive of $P\implies Q$</p>
+<p>More mathematically we can say that $P\implies Q$ is equivalent to $\neg Q\implies\neg P$ , so instead of proving the first we can prove the second one</p>
+<p>That&rsquo;s a lot of information!, let&rsquo;s build it bit by bit :</p>
+<p>The $\neg$ symbol mean &ldquo;the negation&rdquo; or &ldquo;the opposite&rdquo; so if $P$ is True, the negation of $P$ (which is $\neg P$) is False.</p>
+<p>Okay now let&rsquo;s take an example to explain that equivalence:</p>
+<p>$$
+\text{The fuel tank is not empty}\implies\text{the car will move}
+$$
+now let&rsquo;s write the contrapositive form</p>
+<p>$$
+\neg\text{ (the car will move)}\implies\neg\text{ (The fuel tank is not empty)}
+$$
+let&rsquo;s simplify it
+$$
+\text{ the car doesn&rsquo;t move}\implies\text{ The fuel tank is empty}
+$$</p>
+<p>&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..</p>
+<p>Okay now after we make everything clear we can prove our theorem :</p>
+<p>We have
+$$n^2\text{  is even } \implies n \text{ is even}  $$
+By using the contrapositive form
+$$n\text{  is odd } \implies n^2 \text{ is odd}  $$
+The negation of <code>n is even</code> is <code>n is odd</code> the same goes for $n^2$</p>
+<p>now let&rsquo;s do the same as before we suppose that $n$ is odd and we prove that $n^2$ is odd</p>
+<p>By definition of odd number we have :</p>
+<p>$$ n=2<em>k+1 $$
+We square both sides
+$$n^2=(2</em>k+1)^2$$
+we simplify the right side
+$$n^2=4k^2+1+4k$$
+by taking 2 as a factor
+$$n^2=2(2k^2 +2k)+1$$
+let define $k&rsquo;=2k^2+2k$
+$$n^2=2k&rsquo;+1$$
+which is the definition of odd number that mean $n^2$ is odd number</p>
+<p>Because the contrapositive of $n^2\text{  is even } \implies n \text{ is even}$ is true , $n^2\text{  is even } \implies n \text{ is even}$ is also true</p>
+<h3 id="c-proof-by-contradiction">C) Proof by Contradiction</h3>
 ]]></content:encoded>
     </item>
   </channel>

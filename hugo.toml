@@ -86,3 +86,7 @@ enableRobotsTXT = true
   [params.author]
     name = "John Doe" # Your name as shown in the RSS feed metadata
     email = "me@example.com" # Added to the footer so readers can reply to posts
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
