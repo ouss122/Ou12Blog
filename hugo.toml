@@ -14,10 +14,11 @@ enableRobotsTXT = true
   [markup.highlight]
     lineNos = true
     lineNumbersInTable = false
+    style = "base16-snazzy"
     # This allows Bear Cub to use a variation of Dracula that is more accessible
     # to people with poor eyesight. For more information about color contrast
     # and accessibility, see https://web.dev/color-and-contrast-accessibility/
-    noClasses = false
+    #noClasses = false
 
 # Multilingual mode config. More for information about how to setup translation,
 # see https://gohugo.io/content-management/multilingual/
@@ -90,3 +91,8 @@ enableRobotsTXT = true
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
+
+[[module.mounts]]
+source = 'images'
+target = 'static/images'

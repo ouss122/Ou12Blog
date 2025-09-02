@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Math on Ou12</title>
-    <link>http://localhost:41913/tags/math/</link>
+    <link>http://localhost:1313/tags/math/</link>
     <description>Recent content in Math on Ou12</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <managingEditor>me@example.com (John Doe)</managingEditor>
     <webMaster>me@example.com (John Doe)</webMaster>
     <lastBuildDate>Mon, 01 Sep 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:41913/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/math/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Contradiction, Contraposition and Lean</title>
-      <link>http://localhost:41913/blog/contradiction-contraposition-and-lean/</link>
+      <link>http://localhost:1313/blog/contradiction-contraposition-and-lean/</link>
       <pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate><author>me@example.com (John Doe)</author>
-      <guid>http://localhost:41913/blog/contradiction-contraposition-and-lean/</guid>
+      <guid>http://localhost:1313/blog/contradiction-contraposition-and-lean/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;There is nothing better in Math then the joy of proving a theorem but believe me proving it with &lt;strong&gt;Lean&lt;/strong&gt; is just another level.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Lean&lt;/strong&gt; is proof assistant programming language (also known as interactive theorem provers ) that help us to write &amp;ldquo;correct&amp;rdquo; proofs by :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Checking and Pointing out any mistake in our proof&lt;/li&gt;&#xA;&lt;li&gt;Giving useful hints and suggestions when needed&lt;/li&gt;&#xA;&lt;li&gt;Displaying the current &lt;em&gt;goal(s)&lt;/em&gt; (what we need to prove) and our &lt;em&gt;hypotheses&lt;/em&gt; (What we know) in real time&lt;/li&gt;&#xA;&lt;li&gt;The huge &lt;em&gt;Mathlib&lt;/em&gt; library containing thousands of theorems proved by other mathematicians that we can easily use and apply in our proof&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;You might hear the sentence &amp;ldquo;formalizing a proof with lean&amp;rdquo; which mean converting a classic pen and paper proof into a proof written in formal language which is &lt;strong&gt;Lean&lt;/strong&gt; in our case&lt;/p&gt;</description>
       <content:encoded><![CDATA[<h1 id="introduction">Introduction</h1>
 <p>There is nothing better in Math then the joy of proving a theorem but believe me proving it with <strong>Lean</strong> is just another level.</p>
@@ -82,19 +82,105 @@ $$n\text{  is odd } \implies n^2 \text{ is odd}  $$
 The negation of <code>n is even</code> is <code>n is odd</code> the same goes for $n^2$</p>
 <p>now let&rsquo;s do the same as before we suppose that $n$ is odd and we prove that $n^2$ is odd</p>
 <p>By definition of odd number we have :</p>
-<p>$$ n=2<em>k+1 $$
-We square both sides
-$$n^2=(2</em>k+1)^2$$
-we simplify the right side
-$$n^2=4k^2+1+4k$$
-by taking 2 as a factor
-$$n^2=2(2k^2 +2k)+1$$
-let define $k&rsquo;=2k^2+2k$
-$$n^2=2k&rsquo;+1$$
-which is the definition of odd number that mean $n^2$ is odd number</p>
+<p>$$ n=2*k+1 $$</p>
+<p>We square both sides</p>
+<p>$$n^2=(2*k+1)^2$$</p>
+<p>We simplify the right side</p>
+<p>$$n^2=4k^2+1+4k$$</p>
+<p>By taking 2 as a factor</p>
+<p>$$n^2=2(2k^2 +2k)+1$$</p>
+<p>Let define $k&rsquo;=2k^2+2k$</p>
+<p>$$n^2=2k&rsquo;+1$$</p>
+<p>Which is the definition of odd number that mean $n^2$ is odd number</p>
 <p>Because the contrapositive of $n^2\text{  is even } \implies n \text{ is even}$ is true , $n^2\text{  is even } \implies n \text{ is even}$ is also true</p>
 <h3 id="c-proof-by-contradiction">C) Proof by Contradiction</h3>
-]]></content:encoded>
+<p>Another way to prove a theorem $P$ is by assuming that $\neg P$ is true and then find a contradiction (any result that&rsquo;s obviously false e.g. $0=1$ ) which confirm that $\neg P$ is definitely false so $P$ is true</p>
+<p>Let&rsquo;s apply it to our theorem, first we assume that the whole statement is false</p>
+<p>$$
+\neg (n^2\text{ is even} \implies {n\text{ is even}})
+$$</p>
+<p>De Morgan Law state that $\neg (P\implies Q)\iff P \land \neg Q$ (the $\iff$ symbol used to show equivalence) ,which turn our statement into:</p>
+<p>$$n^2 \text{ is even } \land n \text{ is odd} $$
+which is read as $n^2$ is even <em><strong>and</strong></em> n is odd, now that we have those two assumptions let&rsquo;s try to find a contradiction:</p>
+<p>like we did in the &ldquo;Proof by Contrapostion&rdquo; section :</p>
+<p>$$ n = 2k + 1 $$
+$$n^2 = (2k+1)^2$$
+$$ n^2 = 4k^2 +1 + 4k$$
+$$n^2=2(2k^2+2k)+1$$
+Let&rsquo;s define $k&rsquo;=2k^2+2k$
+$$n^2=2k&rsquo;+1$$</p>
+<p>We can see that $n^2$ is an odd number by definition, but our assumption say that $n^2$ is even Contradiction!!!</p>
+<p>Which prove that $\neg (n^2\text{ is even} \implies {n\text{ is even}})$ is false so &ldquo;$n^2\text{ is even} \implies {n\text{ is even}}$&rdquo; must be true</p>
+<h1 id="part-two--formalizing-with-lean">Part Two : Formalizing with Lean</h1>
+<h3 id="quick-recap">Quick Recap:</h3>
+<p>Our goal was to prove that
+$$
+n^2\text{ is even} \implies {n\text{ is even}}
+$$
+which we did using <a href="/blog/contradiction-contraposition-and-lean/#b-proof-by-contrapositive">contrapositive</a> and <a href="/blog/contradiction-contraposition-and-lean/#c-proof-by-contradiction">contradiction</a> methods, Now we will write those two proofs in Lean</p>
+<p>To use Lean you can either <a href="https://leanprover-community.github.io/get_started.html">install</a> it locally or use the <a href="https://live.lean-lang.org/#codez=JYWwDg9gTgLgBAWQIYwBYBtgCMBQOCmAHkuOvnAN4B2cAXHICSEAvnABSp1wCiAbvjaxoA9OACYAlOM69&#43;bKuNoBeOFgCeOOHADO0KKqA">lean4web</a> online version</p>
+<p>For this tutorial we are going to use the <a href="https://live.lean-lang.org/#codez=JYWwDg9gTgLgBAWQIYwBYBtgCMBQOCmAHkuOvnAN4B2cAXHICSEAvnABSp1wCiAbvjaxoA9OACYAlOM69&#43;bKuNoBeOFgCeOOHADO0KKqA">online</a> version, open the link and you will get this:</p>
+<p><img src="/images/a.png" alt="d"></p>
+<p>The left-hand side is where you type the code (or the proof in our case) and the right-hand side is called the <strong>Info view</strong> where Lean will display all the important information (e.g. hypothesis, goals, errors, suggestions, &hellip;)</p>
+<p>Now back to the code:</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lean4" data-lang="lean4"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff6ac1">import</span> Mathlib
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>  
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#ff6ac1">example</span> <span style="color:#ff6ac1">{</span>n <span style="color:#ff6ac1">:</span> ℤ<span style="color:#ff6ac1">}</span> <span style="color:#ff6ac1">(</span>h <span style="color:#ff6ac1">:</span> Even <span style="color:#ff6ac1">(</span>n <span style="color:#ff5c57">^</span> <span style="color:#ff9f43">2</span><span style="color:#ff6ac1">))</span> <span style="color:#ff6ac1">:</span> Even <span style="color:#ff6ac1">(</span>n<span style="color:#ff6ac1">):</span><span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">by</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>  <span style="color:#ff5c57">sorry</span></span></span></code></pre></div><p>The first line tell Lean to import the <code>Mathlib</code> library which contain everything we need to prove our theorem.
+Note : it&rsquo;s a bad practice to import all the <code>Mathlib</code> library you should only import what you need only, I did it to keep the tutorial simple</p>
+<p>The 7th line is the one we use to declare a theorem which are going to prove</p>
+<ul>
+<li>
+<p>The <code>example</code> keyword is used to declare that we are going to start a proof, we can also use <code>theorem</code> or <code>lemma</code> keyword. But unlike <code>example</code> you need to provide a name for them that so you can refer to them later in other proofs which is not possible for <code>example</code> (e.g. <code>theorem even_square</code> or <code>theorem my_unique_proof</code> the name doesn&rsquo;t matter)</p>
+</li>
+<li>
+<p><code>{n : ℤ}</code> we define an integer n</p>
+</li>
+<li>
+<p><code>(h : Even (n ^ 2))</code> we declare the hypothesis (the $P$ from before) which is $n^2$ is even and give it a name (I give the name <code>h</code>) so we can refer to it in our proof</p>
+</li>
+<li>
+<p><code>: Even (n)</code> now we declare the consequence (the $Q$ from before) which must be typed after the <code>:</code></p>
+</li>
+<li>
+<p><code>:=</code> after this symbol we start writing the proof if we have a proof that can directly close our goal ($n$ is even) we can write it after that symbol and we are done (e.g.<code>:= even_squae_eq_ev</code> ) . We call this mode <strong>Term mode</strong></p>
+<p>Note: for trivial theorems we can even use our hypothesizes to close the goal
+for example, if want to prove $P$ (any statement $P$) and we already have $P$ as a hypothesis we can do :</p>
+</li>
+</ul>
+
+
+
+
+
+<pre tabindex="0"><code>theorem very_easy  (h : P) : P := h</code></pre><ul>
+<li>Okay back to our theorem, in our case we don&rsquo;t have a theorem to close the goal so we switch to <strong>Tactic mode</strong> (where we will use tactics to close the goal) by using the keyword <code>by</code> after <code>:=</code></li>
+</ul>
+<p>Notice that if you go to the <a href="https://live.lean-lang.org/#codez=JYWwDg9gTgLgBAWQIYwBYBtgCMBQOCmAHkuOvnAN4B2cAXHICSEAvnABSp1wCiAbvjaxoA9OACYAlOM69&#43;bKuNoBeOFgCeOOHADO0KKqA">online</a> version and put your mouse cursor after the <code>by</code> keyword the Info view change</p>
+<blockquote>
+<p><strong>1 goal</strong></p>
+<p><strong>n</strong> : ℤ</p>
+<p><strong>h</strong> : Even (n ^ 2)</p>
+<p><strong>⊢</strong> Even n</p></blockquote>
+<p>We see everything we defined so far the number <code>n</code> , the hypothesis <code>h</code> and our goal which is anything after <strong>⊢</strong> .</p>
+<p>The 8th line have the keyword <code>sorry</code> which mean &ldquo;sorry we don&rsquo;t have proof yet but please don&rsquo;t throw an error&rdquo;</p>
+<p>Now let&rsquo;s try to prove it using our previous knowledge</p>
+<h3 id="a-proof-by-contradiction">A) Proof by Contradiction</h3>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lean4" data-lang="lean4"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff6ac1">import</span> Mathlib
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#ff6ac1">example</span> <span style="color:#ff6ac1">{</span>n <span style="color:#ff6ac1">:</span> ℕ<span style="color:#ff6ac1">}</span> <span style="color:#ff6ac1">(</span>h <span style="color:#ff6ac1">:</span> Even <span style="color:#ff6ac1">(</span>n <span style="color:#ff5c57">^</span> <span style="color:#ff9f43">2</span><span style="color:#ff6ac1">))</span> <span style="color:#ff6ac1">:</span> Even <span style="color:#ff6ac1">(</span>n<span style="color:#ff6ac1">):</span><span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">by</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>  by_contra hneg</span></span></code></pre></div>]]></content:encoded>
     </item>
   </channel>
 </rss>

@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "c3ca639c3dc4db6b",
+        "id": "aafa0b38fe7d6c7a",
         "type": "tabs",
         "children": [
           {
-            "id": "d60f1ca5e6c081bb",
+            "id": "d2607285b869a1de",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -169,11 +169,17 @@
       "bases:Create new base": false
     }
   },
-  "active": "d60f1ca5e6c081bb",
+  "active": "d2607285b869a1de",
   "lastOpenFiles": [
+    "Pasted.md",
+    "blog/Contradiction, Contraposition and Lean.md",
+    "a.png",
+    "blog/Pasted image 20250902084335.png",
+    "Pasted image 20250902084335.png",
+    "contraposition.md",
+    "blog/rich-content.md",
     "blog/math-typesetting.md",
     "blog/markdown-syntax.md",
-    "blog/Contradiction, Contraposition and Lean.md",
     "blog/emoji-support.md",
     "blog/_index.md",
     "_index.md"
