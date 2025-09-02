@@ -60,7 +60,7 @@
 <meta itemprop="name" content="Contradiction, Contraposition and Lean">
 <meta itemprop="description" content="Deep dive to some methods of proving theorems with an introduction to Lean theorem prover"><meta itemprop="datePublished" content="2025-09-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2025-09-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2479">
+<meta itemprop="wordCount" content="2624">
 
 <meta itemprop="image" content="http://localhost:1313/images/social_card_bg_hu_801b9265434f10ae.webp"/>
 
@@ -109,19 +109,6 @@
   <a href="/blog/">Blog</a>
 
 <a href='http://localhost:1313/index.xml'>RSS</a>
-
-
-
-
-
-
-
-  
-    
-    
-      <a class="disabled" role="link" aria-disabled="true">pt-BR 🇧🇷</a>
-    
-  
 
 </nav>
 </header>
@@ -437,6 +424,35 @@ we are going to do exactly the same</p>
 <p><strong>hk</strong> : n = 2 * k + 1</p>
 <p><strong>h&rsquo;</strong> : Odd (n ^ 2)</p>
 <p><strong>⊢</strong> False</p></blockquote>
+<p>You can see we indeed have a contradiction between hypothesis <code>h</code> and <code>h'</code> , but lean still can&rsquo;t see it because as we know it don&rsquo;t know that odd is the opposite of even so let&rsquo;s change that</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lean4" data-lang="lean4"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>apply Nat<span style="color:#ff5c57">.</span>not_odd_iff_even<span style="color:#ff5c57">.</span><span style="color:#ff9f43">2</span> <span style="color:#ff6ac1">at</span> h</span></span></code></pre></div><p>We apply the second implication of theorem that we saw before which state:</p>
+<p>$$
+\text{Odd }n \implies\neg\text{ Even } n
+$$</p>
+<p>To the hypothesis <code>h</code> ,which give the following</p>
+<blockquote>
+<p><strong>n k</strong> : ℕ</p>
+<p><strong>hk</strong> : n = 2 * k + 1</p>
+<p><strong>h&rsquo;</strong> : Odd (n ^ 2)</p>
+<p><strong>h</strong> : ¬Odd (n ^ 2)</p>
+<p><strong>⊢</strong> False</p></blockquote>
+<p>now Lean can see the contradiction we just need to type <code>contradiction</code></p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lean4" data-lang="lean4"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>contradiction</span></span></code></pre></div><p>and voila</p>
+<blockquote>
+<p><strong>No goals</strong></p></blockquote>
+<p>The goal is closed and by that we proved the theorem by contradiction</p>
+<p>If you like this article and want to see more consider doing a small <a href="https://ko-fi.com/ou122">donation</a></p>
+<p>Follow me on <a href="https://x.com/Ouss12222">X</a></p>
 
 </content>
 <p>
@@ -448,11 +464,7 @@ we are going to do exactly the same</p>
 </p>
 
 
-  <p>
-    <a href='mailto:me@example.com?subject=Reply%20to%20"Contradiction%2c%20Contraposition%20and%20Lean"'>
-      Reply to this post by email ↪
-    </a>
-  </p>
+
 
 
 

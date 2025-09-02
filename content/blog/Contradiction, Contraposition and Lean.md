@@ -373,3 +373,43 @@ Let's see the info view to check our progress put the cursor on newline after th
 
 
 
+You can see we indeed have a contradiction between hypothesis `h` and `h'` , but lean still can't see it because as we know it don't know that odd is the opposite of even so let's change that
+```lean4
+apply Nat.not_odd_iff_even.2 at h
+```
+
+We apply the second implication of theorem that we saw before which state:
+
+$$
+\text{Odd }n \implies\neg\text{ Even } n
+$$
+
+
+To the hypothesis `h` ,which give the following
+
+> **n k** : ℕ
+> 
+> **hk** : n = 2 * k + 1
+> 
+> **h'** : Odd (n ^ 2)
+> 
+> **h** : ¬Odd (n ^ 2)
+> 
+> **⊢** False
+
+now Lean can see the contradiction we just need to type `contradiction`
+
+```lean4
+contradiction
+```
+
+and voila
+
+> **No goals**
+
+The goal is closed and by that we proved the theorem by contradiction
+
+
+If you like this article and want to see more consider doing a small [donation](https://ko-fi.com/ou122)
+
+Follow me on [X](https://x.com/Ouss12222)

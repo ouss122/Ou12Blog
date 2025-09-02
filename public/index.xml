@@ -59,22 +59,8 @@ $$</p>
 <p>If starting from the $n^2$ element to reach the $n$ element make it harder why can&rsquo;t we start from the $n$ element and climb to the $n^2$ element, and that what &ldquo;Proof by contrapositive&rdquo; is about</p>
 <p>We have a fact that say if $P\implies Q$ then it is the same as $\neg Q\implies \neg P$ , we call this statement the contrapositive of $P\implies Q$</p>
 <p>More mathematically we can say that $P\implies Q$ is equivalent to $\neg Q\implies\neg P$ , so instead of proving the first we can prove the second one</p>
-<p>That&rsquo;s a lot of information!, let&rsquo;s build it bit by bit :</p>
 <p>The $\neg$ symbol mean &ldquo;the negation&rdquo; or &ldquo;the opposite&rdquo; so if $P$ is True, the negation of $P$ (which is $\neg P$) is False.</p>
-<p>Okay now let&rsquo;s take an example to explain that equivalence:</p>
-<p>$$
-\text{The fuel tank is not empty}\implies\text{the car will move}
-$$
-now let&rsquo;s write the contrapositive form</p>
-<p>$$
-\neg\text{ (the car will move)}\implies\neg\text{ (The fuel tank is not empty)}
-$$
-let&rsquo;s simplify it
-$$
-\text{ the car doesn&rsquo;t move}\implies\text{ The fuel tank is empty}
-$$</p>
-<p>&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..</p>
-<p>Okay now after we make everything clear we can prove our theorem :</p>
+<p>Now let&rsquo;s prove our theorem :</p>
 <p>We have
 $$n^2\text{  is even } \implies n \text{ is even}  $$
 By using the contrapositive form
@@ -150,7 +136,7 @@ Note : it&rsquo;s a bad practice to import all the <code>Mathlib</code> library 
 </li>
 <li>
 <p><code>:=</code> after this symbol we start writing the proof if we have a proof that can directly close our goal ($n$ is even) we can write it after that symbol and we are done (e.g.<code>:= even_squae_eq_ev</code> ) . We call this mode <strong>Term mode</strong></p>
-<p>Note: for trivial theorems we can even use our hypothesizes to close the goal
+<p>Note: for trivial theorems we can even use our hypotheses to close the goal
 for example, if want to prove $P$ (any statement $P$) and we already have $P$ as a hypothesis we can do :</p>
 </li>
 </ul>
@@ -180,7 +166,186 @@ for example, if want to prove $P$ (any statement $P$) and we already have $P$ as
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lean4" data-lang="lean4"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff6ac1">import</span> Mathlib
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#ff6ac1">example</span> <span style="color:#ff6ac1">{</span>n <span style="color:#ff6ac1">:</span> ℕ<span style="color:#ff6ac1">}</span> <span style="color:#ff6ac1">(</span>h <span style="color:#ff6ac1">:</span> Even <span style="color:#ff6ac1">(</span>n <span style="color:#ff5c57">^</span> <span style="color:#ff9f43">2</span><span style="color:#ff6ac1">))</span> <span style="color:#ff6ac1">:</span> Even <span style="color:#ff6ac1">(</span>n<span style="color:#ff6ac1">):</span><span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">by</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>  by_contra hneg</span></span></code></pre></div>]]></content:encoded>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>  by_contra hneg</span></span></code></pre></div><p>We start the proof by using <code>by_contra</code> tactic which does exactly as we did in the beginning of the contradiction proof. If we have a hypothesis $P$ and consequence $Q$ (or in the form $P\implies Q$) it return a new hypothesis $\neg Q$ and give it the name <code>hneg</code> and keep our original hypothesis $P$ . Which we can see in the info view if we put the cursor after <code>hneg</code></p>
+<blockquote>
+<p><strong>n</strong> : ℕ</p>
+<p><strong>h</strong> : Even (n ^ 2)</p>
+<p><strong>hneg</strong> : ¬Even n</p>
+<p><strong>⊢</strong> False</p></blockquote>
+<p>Notice that the goal changed to <strong>False</strong> which mean that if we can use our assumptions to find a contradiction that it is obviously false we can close the goal and the theorem is proved</p>
+<p>You can also see that our hypothesis <code>hneg</code> is $\neg\text{ Even }n$ , Lean doesn&rsquo;t know that the negation of even is odd so we have to use an already proven theorem from the <code>Mathlib</code> library that say just that which is <code>Nat.not_even_iff_odd</code> :</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lean4" data-lang="lean4"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff5c57">#</span>check Nat<span style="color:#ff5c57">.</span>not_even_iff_odd</span></span></code></pre></div><p><code>#check</code> let us print the theorem in our info view (putting the cursor at the end of the line or by hovering at <code>#check</code>)</p>
+<blockquote>
+<p>Nat.not_even_iff_odd {n : ℕ} : ¬Even n ↔ Odd n</p></blockquote>
+<p>Notice the equivalence keyword <strong>↔</strong> , what are we going to do next require an implication not equivalence likely there is a way to do a transform</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lean4" data-lang="lean4"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff5c57">#</span>check Nat<span style="color:#ff5c57">.</span>not_even_iff_odd<span style="color:#ff5c57">.</span><span style="color:#ff9f43">1</span></span></span></code></pre></div><p>The <code>.1</code> give the left to right implication, which is the one we will use</p>
+<blockquote>
+<p>Nat.not_even_iff_odd.mp : ¬Even ?m.1 → Odd ?m.1</p></blockquote>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lean4" data-lang="lean4"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff5c57">#</span>check Nat<span style="color:#ff5c57">.</span>not_even_iff_odd<span style="color:#ff5c57">.</span><span style="color:#ff9f43">2</span></span></span></code></pre></div><p>And <code>.2</code> give the other way around</p>
+<blockquote>
+<p>Nat.not_even_iff_odd.mpr : Odd ?m.1 → ¬Even ?m.1</p></blockquote>
+<p>Note: you can also read definition of theorem or tactic or any keyword by hovering above it with the mouse</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lean4" data-lang="lean4"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>apply Nat<span style="color:#ff5c57">.</span>not_even_iff_odd<span style="color:#ff5c57">.</span><span style="color:#ff9f43">1</span> <span style="color:#ff6ac1">at</span> hneg
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>unfold Odd <span style="color:#ff6ac1">at</span> hneg
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#ff6ac1">obtain</span> <span style="color:#ff5c57">⟨</span> k<span style="color:#ff6ac1">,</span>hk<span style="color:#ff5c57">⟩</span> <span style="color:#ff6ac1">:</span><span style="color:#ff5c57">=</span> hneg</span></span></code></pre></div><ul>
+<li>We use the <code>apply</code> tactic to apply the implication $\neg\text{ Even }n\implies\text{Odd }n$ to the <code>hneg</code> hypothesis which convert it to <code>Odd n</code> as you can see in the info view</li>
+</ul>
+<blockquote>
+<p><strong>1 goal</strong></p>
+<p><strong>n</strong> : ℕ</p>
+<p><strong>h</strong> : Even (n ^ 2)</p>
+<p><strong>hneg</strong> : Odd n</p>
+<p><strong>⊢</strong> False</p></blockquote>
+<ul>
+<li><code>unfold</code> tactic as the name implies unfold the definition in this case the definition of <code>Odd</code> in the hypothesis <code>hneg</code> which give the following</li>
+</ul>
+<blockquote>
+<p><strong>1 goal</strong></p>
+<p><strong>n</strong> : ℕ</p>
+<p><strong>h</strong> : Even (n ^ 2)</p>
+<p><strong>hneg</strong> : ∃ k, n = 2 * k + 1</p>
+<p><strong>⊢</strong> False</p></blockquote>
+<p>The <code>∃</code> keyword mean &ldquo;there exists&rdquo; which give the following &ldquo;there exists a number k that satisfies n = 2 * k + 1&rdquo;.
+Note that the <code>unfold</code> tactic only needed for us humans to make the hypothesis more readable, but Lean will do it automatically when using some tactics like <code>apply</code></p>
+<ul>
+<li><code>obtain</code> tactic break the hypothesis <code>hneg</code> into two hypothesis <code>h</code> and <code>hk</code></li>
+</ul>
+<blockquote>
+<p><strong>n</strong> : ℕ</p>
+<p><strong>h</strong> : Even (n ^ 2)</p>
+<p><strong>k</strong> : ℕ</p>
+<p><strong>hk</strong> : n = 2 * k + 1</p>
+<p><strong>⊢</strong> False</p></blockquote>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lean4" data-lang="lean4"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#ff6ac1">have</span> h&#39;<span style="color:#ff6ac1">:</span> Odd <span style="color:#ff6ac1">(</span>n<span style="color:#ff5c57">^</span><span style="color:#ff9f43">2</span><span style="color:#ff6ac1">)</span> <span style="color:#ff6ac1">:</span><span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">by</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>  unfold Odd
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>   
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>  use <span style="color:#ff6ac1">(</span><span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span>k<span style="color:#ff5c57">^</span><span style="color:#ff9f43">2</span> <span style="color:#ff5c57">+</span><span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span>k<span style="color:#ff6ac1">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>  <span style="color:#ff6ac1">calc</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>    n<span style="color:#ff5c57">^</span><span style="color:#ff9f43">2</span> <span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">(</span><span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span>k <span style="color:#ff5c57">+</span><span style="color:#ff9f43">1</span><span style="color:#ff6ac1">)</span><span style="color:#ff5c57">^</span><span style="color:#ff9f43">2</span>       <span style="color:#ff6ac1">:</span><span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">by</span> rw <span style="color:#ff6ac1">[</span>hk<span style="color:#ff6ac1">]</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    <span style="color:#ff5c57">_</span> <span style="color:#ff5c57">=</span> <span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span><span style="color:#ff6ac1">(</span><span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span>k<span style="color:#ff5c57">^</span><span style="color:#ff9f43">2</span> <span style="color:#ff5c57">+</span><span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span>k<span style="color:#ff6ac1">)</span> <span style="color:#ff5c57">+</span> <span style="color:#ff9f43">1</span> <span style="color:#ff6ac1">:</span><span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">by</span> ring</span></span></code></pre></div><p>Remember in the proof by contradiction when we proved that $n^2$ is odd we started from the hypothesis n is odd then by definition
+$$ n = 2k + 1 $$
+$$n^2 = (2k+1)^2$$
+$$ n^2 = 4k^2 +1 + 4k$$
+$$n^2=2(2k^2+2k)+1$$
+Let&rsquo;s define $k&rsquo;=2k^2+2k$
+$$n^2=2k&rsquo;+1$$
+we are going to do exactly the same</p>
+<ul>
+<li>
+<p>The <code>have</code> tactic allow us to introduce new hypothesis but we need to prove it, we introduce the hypothesis <code>h'</code> which say $n^2$ is Odd by using the newly obtained hypothesis <code>hk</code>.</p>
+<p>If you place the cursor after the <code>by</code> keyword you can see that goal change in the info view</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>n</strong> : ℕ</p>
+<p><strong>h</strong> : Even (n ^ 2)</p>
+<p><strong>k</strong> : ℕ</p>
+<p><strong>hk</strong> : n = 2 * k + 1</p>
+<p><strong>⊢</strong> Odd (n ^ 2)</p></blockquote>
+<ul>
+<li>Notice that we used the <code>unfold</code> tactic without specifying a hypothesis then it will be applied to the goal as you see in the info view</li>
+</ul>
+<blockquote>
+<p>&hellip;</p>
+<p><strong>⊢</strong> ∃ k, n ^ 2 = 2 * k + 1</p></blockquote>
+<ul>
+<li>The goal now have the ∃ keyword we now have to provide a value that satisfies the <code>n^2=2*k+1</code>, we know from the proof we did before that $2k^2+2k$ satisfies it so we use the tactic <code>use</code> followed by the value $2k^2+2k$ our goal become</li>
+</ul>
+<blockquote>
+<p>&hellip;</p>
+<p><strong>⊢</strong> n ^ 2 = 2 * (2 * k ^ 2 + 2 * k) + 1</p></blockquote>
+<ul>
+<li>To be able to perform operations on equations (.e.g substitution, simplification, &hellip;) we enter the <code>calc</code> mode, in the calc mode every step must be proved
+<ul>
+<li>
+<p><code>n^2 = (2*k +1)^2       := by rw [hk]</code> we start from $n^2$ and then substitute n with it&rsquo;s equivalent <code>2*k +1</code> which we know from the hypothesis <code>hk</code> .</p>
+</li>
+<li>
+<p>To do this in lean we write the equation<code>n^2 = (2*k +1)^2</code> and then add the <code>:=</code> to declare that we are going to prove it. Add the <code>by</code> keyword to enter tactic mode, notice that the goal changed to <strong>⊢</strong> n ^ 2 = (2 * k + 1) ^ 2</p>
+</li>
+<li>
+<p>We use the tactic <code>rw</code> (which stands for rewrite) with the hypothesis <code>hk</code> .<code>rw</code> will replace the left-hand side of the <code>hk</code> found on the left-hand side of our goal with whatever in the right-hand side of <code>hk</code> which is exactly our goal</p>
+</li>
+<li>
+<p><code>_ = 2*(2*k^2 +2*k) + 1</code> the <code>_</code> is equivalent to what was on the right-hand side on the step above which in this case <code>(2*k +1)^2</code> so the equation which we need to prove is <code>(2*k +1)^2= 2*(2*k^2 +2*k) + 1</code></p>
+</li>
+<li>
+<p>We can prove this kind of algebraic simplification easily by using the <code>ring</code> tactic as shown in the code above</p>
+</li>
+<li>
+<p>And like that we successfully proved that <code>n^2 = 2*(2*k^2 +2*k) + 1</code> which is exactly our goal needed to prove the hypothesis <code>h'</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Let&rsquo;s see the info view to check our progress put the cursor on newline after the previous code</p>
+<blockquote>
+<p><strong>n</strong> : ℕ</p>
+<p><strong>h</strong> : Even (n ^ 2)</p>
+<p><strong>k</strong> : ℕ</p>
+<p><strong>hk</strong> : n = 2 * k + 1</p>
+<p><strong>h&rsquo;</strong> : Odd (n ^ 2)</p>
+<p><strong>⊢</strong> False</p></blockquote>
+<p>You can see we indeed have a contradiction between hypothesis <code>h</code> and <code>h'</code> , but lean still can&rsquo;t see it because as we know it don&rsquo;t know that odd is the opposite of even so let&rsquo;s change that</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lean4" data-lang="lean4"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>apply Nat<span style="color:#ff5c57">.</span>not_odd_iff_even<span style="color:#ff5c57">.</span><span style="color:#ff9f43">2</span> <span style="color:#ff6ac1">at</span> h</span></span></code></pre></div><p>We apply the second implication of theorem that we saw before which state:</p>
+<p>$$
+\text{Odd }n \implies\neg\text{ Even } n
+$$</p>
+<p>To the hypothesis <code>h</code> ,which give the following</p>
+<blockquote>
+<p><strong>n k</strong> : ℕ</p>
+<p><strong>hk</strong> : n = 2 * k + 1</p>
+<p><strong>h&rsquo;</strong> : Odd (n ^ 2)</p>
+<p><strong>h</strong> : ¬Odd (n ^ 2)</p>
+<p><strong>⊢</strong> False</p></blockquote>
+<p>now Lean can see the contradiction we just need to type <code>contradiction</code></p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lean4" data-lang="lean4"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>contradiction</span></span></code></pre></div><p>and voila</p>
+<blockquote>
+<p><strong>No goals</strong></p></blockquote>
+<p>The goal is closed and by that we proved the theorem by contradiction</p>
+<p>if you like this article and want to see more consider doing a small <a href="https://ko-fi.com/ou122">donation</a></p>
+]]></content:encoded>
     </item>
     <item>
       <title>Math Typesetting - use Mathematical notation in blog posts</title>
