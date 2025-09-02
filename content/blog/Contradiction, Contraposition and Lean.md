@@ -7,6 +7,7 @@ description = "Deep dive to some methods of proving theorems with an introductio
 tags = [
     "lean",
     "math",
+    "some4"
 ]
 +++
 
@@ -15,7 +16,7 @@ tags = [
 
 There is nothing better in Math then the joy of proving a theorem but believe me proving it with **Lean** is just another level.
 
-**Lean** is proof assistant programming language (also known as interactive theorem provers ) that help us to write "correct" proofs by : 
+**Lean** is proof assistant programming language (also known as interactive theorem prover ) that help us to write "correct" proofs by : 
 
 - Checking and Pointing out any mistake in our proof
 - Giving useful hints and suggestions when needed
@@ -139,7 +140,7 @@ $$n^2=2k'+1$$
 
 We can see that $n^2$ is an odd number by definition, but our assumption say that $n^2$ is even Contradiction!!!
 
-Which prove that $\neg (n^2\text{ is even} \implies {n\text{ is even}})$ is false so "$n^2\text{ is even} \implies {n\text{ is even}}$" must be true
+Which prove that $\neg (n^2\text{ is even} \implies {n\text{ is even}})$ is false so "$n^2\text{ is even}\implies\ n\text{ is even}$" must be true
 
 # Part Two : Formalizing with Lean
 
@@ -409,13 +410,13 @@ now Lean can see the contradiction we just need to type `contradiction` which is
 contradiction
 ```
 
-and voila
+And voila, looking at the info view we can see:
 
 > **No goals**
 
-The goal is closed and by that we proved the theorem by contradiction
+Which mean the goal is closed and by that we proved the theorem by contradiction.
 
-here the full code 
+And here the full code 
 
 ```lean4
 import Mathlib
@@ -509,4 +510,6 @@ If you enjoyed using lean and want to learn more about it make sure to visit [Le
 
 If you like this article and want to see more consider doing a small [donation](https://ko-fi.com/ou122)
 
-Follow me on [X](https://x.com/Ouss12222)
+My [GitHub](https://github.com/ouss122).
+
+My [LinkedIn](https://www.linkedin.com/in/oussama-salmi-36355527a/).

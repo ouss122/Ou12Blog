@@ -96,17 +96,17 @@ $$n^2=2(2k^2+2k)+1$$
 Let&rsquo;s define $k&rsquo;=2k^2+2k$
 $$n^2=2k&rsquo;+1$$</p>
 <p>We can see that $n^2$ is an odd number by definition, but our assumption say that $n^2$ is even Contradiction!!!</p>
-<p>Which prove that $\neg (n^2\text{ is even} \implies {n\text{ is even}})$ is false so &ldquo;$n^2\text{ is even} \implies {n\text{ is even}}$&rdquo; must be true</p>
+<p>Which prove that $\neg (n^2\text{ is even} \implies {n\text{ is even}})$ is false so &ldquo;$n^2\text{ is even}\implies\ n\text{ is even}$&rdquo; must be true</p>
 <h1 id="part-two--formalizing-with-lean">Part Two : Formalizing with Lean</h1>
 <h3 id="quick-recap">Quick Recap:</h3>
 <p>Our goal was to prove that
 $$
 n^2\text{ is even} \implies {n\text{ is even}}
 $$
-which we did using <a href="/blog/contradiction-contraposition-and-lean/#b-proof-by-contrapositive">contrapositive</a> and <a href="/blog/contradiction-contraposition-and-lean/#c-proof-by-contradiction">contradiction</a> methods, Now we will write those two proofs in Lean</p>
+which we did using <a href="/blog/contradiction-contraposition-and-lean/#b-proof-by-contrapositive">contrapositive</a> and <a href="/blog/contradiction-contraposition-and-lean/#c-proof-by-contradiction">contradiction</a> methods, To keep the article small we will only write the proof by contradiction method in lean</p>
 <p>To use Lean you can either <a href="https://leanprover-community.github.io/get_started.html">install</a> it locally or use the <a href="https://live.lean-lang.org/#codez=JYWwDg9gTgLgBAWQIYwBYBtgCMBQOCmAHkuOvnAN4B2cAXHICSEAvnABSp1wCiAbvjaxoA9OACYAlOM69&#43;bKuNoBeOFgCeOOHADO0KKqA">lean4web</a> online version</p>
 <p>For this tutorial we are going to use the <a href="https://live.lean-lang.org/#codez=JYWwDg9gTgLgBAWQIYwBYBtgCMBQOCmAHkuOvnAN4B2cAXHICSEAvnABSp1wCiAbvjaxoA9OACYAlOM69&#43;bKuNoBeOFgCeOOHADO0KKqA">online</a> version, open the link and you will get this:</p>
-<p><img src="/images/a.png" alt="d"></p>
+<p><img src="https://i.ibb.co/5x5s8zGy/a.png" alt="lean online editor"></p>
 <p>The left-hand side is where you type the code (or the proof in our case) and the right-hand side is called the <strong>Info view</strong> where Lean will display all the important information (e.g. hypothesis, goals, errors, suggestions, &hellip;)</p>
 <p>Now back to the code:</p>
 
@@ -157,7 +157,8 @@ for example, if want to prove $P$ (any statement $P$) and we already have $P$ as
 <p>We see everything we defined so far the number <code>n</code> , the hypothesis <code>h</code> and our goal which is anything after <strong>⊢</strong> .</p>
 <p>The 8th line have the keyword <code>sorry</code> which mean &ldquo;sorry we don&rsquo;t have proof yet but please don&rsquo;t throw an error&rdquo;</p>
 <p>Now let&rsquo;s try to prove it using our previous knowledge</p>
-<h3 id="a-proof-by-contradiction">A) Proof by Contradiction</h3>
+<h3 id="proof-by-contradiction">Proof by Contradiction</h3>
+<p>Copy and paste the newline of code in your code editor so it became like this:</p>
 
 
 
@@ -199,7 +200,8 @@ for example, if want to prove $P$ (any statement $P$) and we already have $P$ as
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lean4" data-lang="lean4"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff5c57">#</span>check Nat<span style="color:#ff5c57">.</span>not_even_iff_odd<span style="color:#ff5c57">.</span><span style="color:#ff9f43">2</span></span></span></code></pre></div><p>And <code>.2</code> give the other way around</p>
 <blockquote>
 <p>Nat.not_even_iff_odd.mpr : Odd ?m.1 → ¬Even ?m.1</p></blockquote>
-<p>Note: you can also read definition of theorem or tactic or any keyword by hovering above it with the mouse</p>
+<p>Note: you can also read definition of theorem or tactic or any keyword by hovering above it with the mouse.</p>
+<p>Add those lines of code to yours:</p>
 
 
 
@@ -227,7 +229,7 @@ for example, if want to prove $P$ (any statement $P$) and we already have $P$ as
 <p><strong>hneg</strong> : ∃ k, n = 2 * k + 1</p>
 <p><strong>⊢</strong> False</p></blockquote>
 <p>The <code>∃</code> keyword mean &ldquo;there exists&rdquo; which give the following &ldquo;there exists a number k that satisfies n = 2 * k + 1&rdquo;.
-Note that the <code>unfold</code> tactic only needed for us humans to make the hypothesis more readable, but Lean will do it automatically when using some tactics like <code>apply</code></p>
+Note that the <code>unfold</code> tactic only needed for us humans to make the hypothesis more readable, but Lean will do it automatically when using some tactics like <code>obtain</code> ,this why you can delete the <code>unfold</code> line if you want</p>
 <ul>
 <li><code>obtain</code> tactic break the hypothesis <code>hneg</code> into two hypothesis <code>h</code> and <code>hk</code></li>
 </ul>
@@ -237,6 +239,7 @@ Note that the <code>unfold</code> tactic only needed for us humans to make the h
 <p><strong>k</strong> : ℕ</p>
 <p><strong>hk</strong> : n = 2 * k + 1</p>
 <p><strong>⊢</strong> False</p></blockquote>
+<p>Now let&rsquo;s add those lines of code to yours:</p>
 
 
 
@@ -317,7 +320,7 @@ we are going to do exactly the same</p>
 <p><strong>hk</strong> : n = 2 * k + 1</p>
 <p><strong>h&rsquo;</strong> : Odd (n ^ 2)</p>
 <p><strong>⊢</strong> False</p></blockquote>
-<p>You can see we indeed have a contradiction between hypothesis <code>h</code> and <code>h'</code> , but lean still can&rsquo;t see it because as we know it don&rsquo;t know that odd is the opposite of even so let&rsquo;s change that</p>
+<p>You can see we indeed have a contradiction between hypothesis <code>h</code> and <code>h'</code> , but lean still can&rsquo;t see it because as we know it don&rsquo;t know that odd is the opposite of even so let&rsquo;s change that. By adding this line of code:</p>
 
 
 
@@ -334,7 +337,7 @@ $$</p>
 <p><strong>h&rsquo;</strong> : Odd (n ^ 2)</p>
 <p><strong>h</strong> : ¬Odd (n ^ 2)</p>
 <p><strong>⊢</strong> False</p></blockquote>
-<p>now Lean can see the contradiction we just need to type <code>contradiction</code></p>
+<p>now Lean can see the contradiction we just need to type <code>contradiction</code> which is also a tactic</p>
 
 
 
@@ -343,8 +346,94 @@ $$</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lean4" data-lang="lean4"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>contradiction</span></span></code></pre></div><p>and voila</p>
 <blockquote>
 <p><strong>No goals</strong></p></blockquote>
-<p>The goal is closed and by that we proved the theorem by contradiction</p>
-<p>if you like this article and want to see more consider doing a small <a href="https://ko-fi.com/ou122">donation</a></p>
+<p>The goal is closed and by that we proved the theorem by contradiction.</p>
+<p>And here the full code</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lean4" data-lang="lean4"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#ff6ac1">import</span> Mathlib
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#ff6ac1">example</span> <span style="color:#ff6ac1">{</span>n <span style="color:#ff6ac1">:</span> ℕ<span style="color:#ff6ac1">}</span> <span style="color:#ff6ac1">(</span>h <span style="color:#ff6ac1">:</span> Even <span style="color:#ff6ac1">(</span>n <span style="color:#ff5c57">^</span> <span style="color:#ff9f43">2</span><span style="color:#ff6ac1">))</span> <span style="color:#ff6ac1">:</span> Even <span style="color:#ff6ac1">(</span>n<span style="color:#ff6ac1">):</span><span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">by</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>by_contra hneg
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>apply Nat<span style="color:#ff5c57">.</span>not_even_iff_odd<span style="color:#ff5c57">.</span><span style="color:#ff9f43">1</span> <span style="color:#ff6ac1">at</span> hneg
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>unfold Odd <span style="color:#ff6ac1">at</span> hneg
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#ff6ac1">obtain</span> <span style="color:#ff5c57">⟨</span> k<span style="color:#ff6ac1">,</span>hk<span style="color:#ff5c57">⟩</span> <span style="color:#ff6ac1">:</span><span style="color:#ff5c57">=</span> hneg
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span><span style="color:#ff6ac1">have</span> h&#39;<span style="color:#ff6ac1">:</span> Odd <span style="color:#ff6ac1">(</span>n<span style="color:#ff5c57">^</span><span style="color:#ff9f43">2</span><span style="color:#ff6ac1">)</span> <span style="color:#ff6ac1">:</span><span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">by</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>unfold Odd
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>use <span style="color:#ff6ac1">(</span><span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span>k<span style="color:#ff5c57">^</span><span style="color:#ff9f43">2</span> <span style="color:#ff5c57">+</span><span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span>k<span style="color:#ff6ac1">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span><span style="color:#ff6ac1">calc</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>n<span style="color:#ff5c57">^</span><span style="color:#ff9f43">2</span> <span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">(</span><span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span>k <span style="color:#ff5c57">+</span><span style="color:#ff9f43">1</span><span style="color:#ff6ac1">)</span><span style="color:#ff5c57">^</span><span style="color:#ff9f43">2</span> <span style="color:#ff6ac1">:</span><span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">by</span> rw <span style="color:#ff6ac1">[</span>hk<span style="color:#ff6ac1">]</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span><span style="color:#ff5c57">_</span> <span style="color:#ff5c57">=</span> <span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span><span style="color:#ff6ac1">(</span><span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span>k<span style="color:#ff5c57">^</span><span style="color:#ff9f43">2</span> <span style="color:#ff5c57">+</span><span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span>k<span style="color:#ff6ac1">)</span> <span style="color:#ff5c57">+</span> <span style="color:#ff9f43">1</span> <span style="color:#ff6ac1">:</span><span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">by</span> ring
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>apply Nat<span style="color:#ff5c57">.</span>not_odd_iff_even<span style="color:#ff5c57">.</span><span style="color:#ff9f43">2</span> <span style="color:#ff6ac1">at</span> h
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>contradiction</span></span></code></pre></div><h2 id="extra">Extra</h2>
+<p>Here the full code for the proof by contrapositive</p>
+
+
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lean4" data-lang="lean4"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#ff6ac1">import</span> Mathlib
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#ff6ac1">example</span> <span style="color:#ff6ac1">{</span>n <span style="color:#ff6ac1">:</span> ℕ<span style="color:#ff6ac1">}</span> <span style="color:#ff6ac1">(</span>h <span style="color:#ff6ac1">:</span> Even <span style="color:#ff6ac1">(</span>n <span style="color:#ff5c57">^</span> <span style="color:#ff9f43">2</span><span style="color:#ff6ac1">))</span> <span style="color:#ff6ac1">:</span> Even <span style="color:#ff6ac1">(</span>n<span style="color:#ff6ac1">):</span><span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">by</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>  contrapose h
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>  apply Nat<span style="color:#ff5c57">.</span>not_even_iff_odd<span style="color:#ff5c57">.</span><span style="color:#ff9f43">1</span> <span style="color:#ff6ac1">at</span> h
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>  apply Nat<span style="color:#ff5c57">.</span>not_even_iff_odd<span style="color:#ff5c57">.</span><span style="color:#ff9f43">2</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>  <span style="color:#ff6ac1">obtain</span> <span style="color:#ff5c57">⟨</span>k<span style="color:#ff6ac1">,</span>hk<span style="color:#ff5c57">⟩</span> <span style="color:#ff6ac1">:</span><span style="color:#ff5c57">=</span> h
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>  use <span style="color:#ff6ac1">(</span><span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span>k<span style="color:#ff5c57">^</span><span style="color:#ff9f43">2</span> <span style="color:#ff5c57">+</span> <span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span>k<span style="color:#ff6ac1">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>  <span style="color:#ff6ac1">calc</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>    n<span style="color:#ff5c57">^</span><span style="color:#ff9f43">2</span> <span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">(</span><span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span>k <span style="color:#ff5c57">+</span> <span style="color:#ff9f43">1</span><span style="color:#ff6ac1">)</span><span style="color:#ff5c57">^</span><span style="color:#ff9f43">2</span>        <span style="color:#ff6ac1">:</span><span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">by</span> rw <span style="color:#ff6ac1">[</span>hk<span style="color:#ff6ac1">]</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    <span style="color:#ff5c57">_</span>   <span style="color:#ff5c57">=</span> <span style="color:#ff9f43">4</span><span style="color:#ff5c57">*</span>k<span style="color:#ff5c57">^</span><span style="color:#ff9f43">2</span> <span style="color:#ff5c57">+</span> <span style="color:#ff9f43">1</span> <span style="color:#ff5c57">+</span> <span style="color:#ff9f43">4</span><span style="color:#ff5c57">*</span>k    <span style="color:#ff6ac1">:</span><span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">by</span> ring
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    <span style="color:#ff5c57">_</span>   <span style="color:#ff5c57">=</span> <span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span><span style="color:#ff6ac1">(</span><span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span>k<span style="color:#ff5c57">^</span><span style="color:#ff9f43">2</span> <span style="color:#ff5c57">+</span> <span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span>k<span style="color:#ff6ac1">)</span> <span style="color:#ff5c57">+</span><span style="color:#ff9f43">1</span> <span style="color:#ff6ac1">:</span><span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">by</span> ring</span></span></code></pre></div><p>I want to keep the article small this why I can&rsquo;t explain it all, but here some tips:</p>
+<ul>
+<li><code>contrapose h</code> , as we did above in the proof by contrapositive we turn $P\implies Q$ into $\neg Q\implies\neg P$ and that exactly what <code>contrapose</code> tactic do it negate the hypothesis <code>h</code> and the goal and then swap their places, so before using <code>contrapose</code> tactic we have:</li>
+</ul>
+<blockquote>
+<p><strong>n</strong> : ℕ</p>
+<p><strong>h</strong> : Even (n ^ 2)</p>
+<p><strong>⊢</strong> Even n</p></blockquote>
+<ul>
+<li>and after using <code>contrapose</code> , we get:</li>
+</ul>
+<blockquote>
+<p><strong>n</strong> : ℕ</p>
+<p><strong>h</strong> : ¬Even n</p>
+<p><strong>⊢</strong> ¬Even (n ^ 2)</p></blockquote>
+<ul>
+<li>As you can notice the negate of hypothesis <code>h</code> become the goal and the negate of the goal become the hypothesis <code>h</code></li>
+<li>An important remark for the 6th line: using <code>apply</code> without specifying a hypothesis mean using it for the goal and the work of <code>apply</code> is reversed. So if the implication we want to use is $P\implies Q$ and our goal is Q using <code>apply</code> will turn the goal intro $P$ , and that exactly what happen here is our implication <code>Nat.not_even_iff_odd.2</code>
+$$
+\text{Odd }n\implies\neg\text{Even }n
+$$
+which also work $n^2$</li>
+</ul>
+<p>$$
+\text{Odd }n^2\implies\neg\text{Even }n^2
+$$</p>
+<ul>
+<li>Notice that the goal is the same as the consequence of the above implication $\neg\text{Even }n^2$ ,so after applying the implication to our goal with this line of code <code>apply Nat.not_even_iff_odd.2</code> the goal became :</li>
+</ul>
+<blockquote>
+<p><strong>n</strong> : ℕ</p>
+<p><strong>h</strong> : Odd n</p>
+<p><strong>⊢</strong> Odd (n ^ 2)</p></blockquote>
+<h2 id="the-end">The End</h2>
+<p>If you enjoyed using lean and want to learn more about it make sure to visit <a href="https://leanprover-community.github.io/learn.html">Learning Lean 4</a> where you can find some of the excellent learning resources</p>
+<p>If you like this article and want to see more consider doing a small <a href="https://ko-fi.com/ou122">donation</a></p>
+<p>My GitHub</p>
 ]]></content:encoded>
     </item>
   </channel>
