@@ -149,7 +149,7 @@ Our goal was to prove that
 $$
 n^2\text{ is even} \implies {n\text{ is even}}
 $$
-which we did using [contrapositive](#b-proof-by-contrapositive) and [contradiction](#c-proof-by-contradiction) methods, Now we will write the proof by contradiction in lean
+which we did using [contrapositive](#b-proof-by-contrapositive) and [contradiction](#c-proof-by-contradiction) methods, To keep the article small we will only write the proof by contradiction method in lean
 
 To use Lean you can either [install](https://leanprover-community.github.io/get_started.html) it locally or use the [lean4web](https://live.lean-lang.org/#codez=JYWwDg9gTgLgBAWQIYwBYBtgCMBQOCmAHkuOvnAN4B2cAXHICSEAvnABSp1wCiAbvjaxoA9OACYAlOM69+bKuNoBeOFgCeOOHADO0KKqA) online version
 
@@ -205,6 +205,8 @@ Now let's try to prove it using our previous knowledge
 
 ### Proof by Contradiction
 
+Copy and paste the newline of code in your code editor so it became like this:
+
 ```lean4
 import Mathlib
 
@@ -251,7 +253,9 @@ The `.1` give the left to right implication, which is the one we will use
 And `.2` give the other way around
 > Nat.not_even_iff_odd.mpr : Odd ?m.1 → ¬Even ?m.1
 
-Note: you can also read definition of theorem or tactic or any keyword by hovering above it with the mouse
+Note: you can also read definition of theorem or tactic or any keyword by hovering above it with the mouse.
+
+Add those lines of code to yours:
 
 ```lean4
 
@@ -284,7 +288,7 @@ obtain ⟨ k,hk⟩ := hneg
 > **⊢** False
 
    The `∃` keyword mean "there exists" which give the following "there exists a number k that satisfies n = 2 * k + 1".
-   Note that the `unfold` tactic only needed for us humans to make the hypothesis more readable, but Lean will do it automatically when using some tactics like `apply`
+   Note that the `unfold` tactic only needed for us humans to make the hypothesis more readable, but Lean will do it automatically when using some tactics like `obtain` ,this why you can delete the `unfold` line if you want  
    
 - `obtain` tactic break the hypothesis `hneg` into two hypothesis `h` and `hk`
 
@@ -298,6 +302,7 @@ obtain ⟨ k,hk⟩ := hneg
 > 
 > **⊢** False
 
+Now let's add those lines of code to yours:
 ```lean4
 
 have h': Odd (n^2) := by
@@ -373,7 +378,8 @@ Let's see the info view to check our progress put the cursor on newline after th
 
 
 
-You can see we indeed have a contradiction between hypothesis `h` and `h'` , but lean still can't see it because as we know it don't know that odd is the opposite of even so let's change that
+You can see we indeed have a contradiction between hypothesis `h` and `h'` , but lean still can't see it because as we know it don't know that odd is the opposite of even so let's change that. By adding this line of code:
+
 ```lean4
 apply Nat.not_odd_iff_even.2 at h
 ```
@@ -397,7 +403,7 @@ To the hypothesis `h` ,which give the following
 > 
 > **⊢** False
 
-now Lean can see the contradiction we just need to type `contradiction`
+now Lean can see the contradiction we just need to type `contradiction` which is also a tactic
 
 ```lean4
 contradiction
@@ -440,6 +446,45 @@ apply Nat.not_odd_iff_even.2 at h
 
 contradiction
 ```
+
+
+
+### Extra
+
+Here the full code for the proof by contrapositive
+
+```
+import Mathlib
+
+example {n : ℕ} (h : Even (n ^ 2)) : Even (n):= by
+  contrapose h
+  apply Nat.not_even_iff_odd.1 at h
+  apply Nat.not_even_iff_odd.2
+  obtain ⟨k,hk⟩ := h
+  use (2*k^2 + 2*k)
+  calc
+    n^2 = (2*k + 1)^2        := by rw [hk]
+    _   = 4*k^2 + 1 + 4*k    := by ring
+    _   = 2*(2*k^2 + 2*k) +1 := by ring
+```
+
+I want to keep the article small this why I can't explain it all, but here some tips:
+
+- `contrapose h` , as we did above in the proof by contrapositive we turn $P\implies Q$ into $\neg Q\implies\neg P$ and that exactly what `contrapose` tactic do it negate the hypothesis `h` and the goal and then swap their places, so before using `contrapose` tactic we have:
+> n : ℕ
+> h : Even (n ^ 2)
+> ⊢ Even n
+
+- and after using `contrapose` , we have:
+> n : ℕ
+> h : ¬Even n
+> ⊢ ¬Even (n ^ 2)
+
+
+
+
+
+If you enjoyed using lean and want to learn more about it make sure to visit [Learning Lean 4](https://leanprover-community.github.io/learn.html) where you can find some of the excellent learning resources
 
 
 If you like this article and want to see more consider doing a small [donation](https://ko-fi.com/ou122)

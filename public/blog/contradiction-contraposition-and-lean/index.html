@@ -60,7 +60,7 @@
 <meta itemprop="name" content="Contradiction, Contraposition and Lean">
 <meta itemprop="description" content="Deep dive to some methods of proving theorems with an introduction to Lean theorem prover"><meta itemprop="datePublished" content="2025-09-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2025-09-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2705">
+<meta itemprop="wordCount" content="2960">
 
 <meta itemprop="image" content="http://localhost:1313/images/social_card_bg_hu_801b9265434f10ae.webp"/>
 
@@ -209,7 +209,7 @@ $$n^2=2k&rsquo;+1$$</p>
 $$
 n^2\text{ is even} \implies {n\text{ is even}}
 $$
-which we did using <a href="/blog/contradiction-contraposition-and-lean/#b-proof-by-contrapositive">contrapositive</a> and <a href="/blog/contradiction-contraposition-and-lean/#c-proof-by-contradiction">contradiction</a> methods, Now we will write the proof by contradiction in lean</p>
+which we did using <a href="/blog/contradiction-contraposition-and-lean/#b-proof-by-contrapositive">contrapositive</a> and <a href="/blog/contradiction-contraposition-and-lean/#c-proof-by-contradiction">contradiction</a> methods, To keep the article small we will only write the proof by contradiction method in lean</p>
 <p>To use Lean you can either <a href="https://leanprover-community.github.io/get_started.html">install</a> it locally or use the <a href="https://live.lean-lang.org/#codez=JYWwDg9gTgLgBAWQIYwBYBtgCMBQOCmAHkuOvnAN4B2cAXHICSEAvnABSp1wCiAbvjaxoA9OACYAlOM69&#43;bKuNoBeOFgCeOOHADO0KKqA">lean4web</a> online version</p>
 <p>For this tutorial we are going to use the <a href="https://live.lean-lang.org/#codez=JYWwDg9gTgLgBAWQIYwBYBtgCMBQOCmAHkuOvnAN4B2cAXHICSEAvnABSp1wCiAbvjaxoA9OACYAlOM69&#43;bKuNoBeOFgCeOOHADO0KKqA">online</a> version, open the link and you will get this:</p>
 <p><img src="https://i.ibb.co/5x5s8zGy/a.png" alt="lean online editor"></p>
@@ -264,6 +264,7 @@ for example, if want to prove $P$ (any statement $P$) and we already have $P$ as
 <p>The 8th line have the keyword <code>sorry</code> which mean &ldquo;sorry we don&rsquo;t have proof yet but please don&rsquo;t throw an error&rdquo;</p>
 <p>Now let&rsquo;s try to prove it using our previous knowledge</p>
 <h3 id="proof-by-contradiction">Proof by Contradiction</h3>
+<p>Copy and paste the newline of code in your code editor so it became like this:</p>
 
 
 
@@ -305,7 +306,8 @@ for example, if want to prove $P$ (any statement $P$) and we already have $P$ as
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lean4" data-lang="lean4"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff5c57">#</span>check Nat<span style="color:#ff5c57">.</span>not_even_iff_odd<span style="color:#ff5c57">.</span><span style="color:#ff9f43">2</span></span></span></code></pre></div><p>And <code>.2</code> give the other way around</p>
 <blockquote>
 <p>Nat.not_even_iff_odd.mpr : Odd ?m.1 → ¬Even ?m.1</p></blockquote>
-<p>Note: you can also read definition of theorem or tactic or any keyword by hovering above it with the mouse</p>
+<p>Note: you can also read definition of theorem or tactic or any keyword by hovering above it with the mouse.</p>
+<p>Add those lines of code to yours:</p>
 
 
 
@@ -333,7 +335,7 @@ for example, if want to prove $P$ (any statement $P$) and we already have $P$ as
 <p><strong>hneg</strong> : ∃ k, n = 2 * k + 1</p>
 <p><strong>⊢</strong> False</p></blockquote>
 <p>The <code>∃</code> keyword mean &ldquo;there exists&rdquo; which give the following &ldquo;there exists a number k that satisfies n = 2 * k + 1&rdquo;.
-Note that the <code>unfold</code> tactic only needed for us humans to make the hypothesis more readable, but Lean will do it automatically when using some tactics like <code>apply</code></p>
+Note that the <code>unfold</code> tactic only needed for us humans to make the hypothesis more readable, but Lean will do it automatically when using some tactics like <code>obtain</code> ,this why you can delete the <code>unfold</code> line if you want</p>
 <ul>
 <li><code>obtain</code> tactic break the hypothesis <code>hneg</code> into two hypothesis <code>h</code> and <code>hk</code></li>
 </ul>
@@ -343,6 +345,7 @@ Note that the <code>unfold</code> tactic only needed for us humans to make the h
 <p><strong>k</strong> : ℕ</p>
 <p><strong>hk</strong> : n = 2 * k + 1</p>
 <p><strong>⊢</strong> False</p></blockquote>
+<p>Now let&rsquo;s add those lines of code to yours:</p>
 
 
 
@@ -423,7 +426,7 @@ we are going to do exactly the same</p>
 <p><strong>hk</strong> : n = 2 * k + 1</p>
 <p><strong>h&rsquo;</strong> : Odd (n ^ 2)</p>
 <p><strong>⊢</strong> False</p></blockquote>
-<p>You can see we indeed have a contradiction between hypothesis <code>h</code> and <code>h'</code> , but lean still can&rsquo;t see it because as we know it don&rsquo;t know that odd is the opposite of even so let&rsquo;s change that</p>
+<p>You can see we indeed have a contradiction between hypothesis <code>h</code> and <code>h'</code> , but lean still can&rsquo;t see it because as we know it don&rsquo;t know that odd is the opposite of even so let&rsquo;s change that. By adding this line of code:</p>
 
 
 
@@ -440,7 +443,7 @@ $$</p>
 <p><strong>h&rsquo;</strong> : Odd (n ^ 2)</p>
 <p><strong>h</strong> : ¬Odd (n ^ 2)</p>
 <p><strong>⊢</strong> False</p></blockquote>
-<p>now Lean can see the contradiction we just need to type <code>contradiction</code></p>
+<p>now Lean can see the contradiction we just need to type <code>contradiction</code> which is also a tactic</p>
 
 
 
@@ -482,7 +485,41 @@ $$</p>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>apply Nat<span style="color:#ff5c57">.</span>not_odd_iff_even<span style="color:#ff5c57">.</span><span style="color:#ff9f43">2</span> <span style="color:#ff6ac1">at</span> h
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>contradiction</span></span></code></pre></div><p>If you like this article and want to see more consider doing a small <a href="https://ko-fi.com/ou122">donation</a></p>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>contradiction</span></span></code></pre></div><h3 id="extra">Extra</h3>
+<p>Here the full code for the proof by contrapositive</p>
+
+
+
+
+
+<pre tabindex="0"><code>import Mathlib
+
+example {n : ℕ} (h : Even (n ^ 2)) : Even (n):= by
+  contrapose h
+  apply Nat.not_even_iff_odd.1 at h
+  apply Nat.not_even_iff_odd.2
+  obtain ⟨k,hk⟩ := h
+  use (2*k^2 + 2*k)
+  calc
+    n^2 = (2*k + 1)^2        := by rw [hk]
+    _   = 4*k^2 + 1 + 4*k    := by ring
+    _   = 2*(2*k^2 + 2*k) +1 := by ring</code></pre><p>I want to keep the article small this why I can&rsquo;t explain it all, but here some tips:</p>
+<ul>
+<li><code>contrapose h</code> , as we did above in the proof by contrapositive we turn $P\implies Q$ into $\neg Q\implies\neg P$ and that exactly what <code>contrapose</code> tactic do it negate the hypothesis <code>h</code> and the goal and then swap their places, so before using <code>contrapose</code> tactic we have:</li>
+</ul>
+<blockquote>
+<p>n : ℕ
+h : Even (n ^ 2)
+⊢ Even n</p></blockquote>
+<ul>
+<li>and after using <code>contrapose</code> , we have:</li>
+</ul>
+<blockquote>
+<p>n : ℕ
+h : ¬Even n
+⊢ ¬Even (n ^ 2)</p></blockquote>
+<p>If you enjoyed using lean and want to learn more about it make sure to visit <a href="https://leanprover-community.github.io/learn.html">Learning Lean 4</a> where you can find some of the excellent learning resources</p>
+<p>If you like this article and want to see more consider doing a small <a href="https://ko-fi.com/ou122">donation</a></p>
 <p>Follow me on <a href="https://x.com/Ouss12222">X</a></p>
 
 </content>
