@@ -59,22 +59,8 @@ $$</p>
 <p>If starting from the $n^2$ element to reach the $n$ element make it harder why can&rsquo;t we start from the $n$ element and climb to the $n^2$ element, and that what &ldquo;Proof by contrapositive&rdquo; is about</p>
 <p>We have a fact that say if $P\implies Q$ then it is the same as $\neg Q\implies \neg P$ , we call this statement the contrapositive of $P\implies Q$</p>
 <p>More mathematically we can say that $P\implies Q$ is equivalent to $\neg Q\implies\neg P$ , so instead of proving the first we can prove the second one</p>
-<p>That&rsquo;s a lot of information!, let&rsquo;s build it bit by bit :</p>
 <p>The $\neg$ symbol mean &ldquo;the negation&rdquo; or &ldquo;the opposite&rdquo; so if $P$ is True, the negation of $P$ (which is $\neg P$) is False.</p>
-<p>Okay now let&rsquo;s take an example to explain that equivalence:</p>
-<p>$$
-\text{The fuel tank is not empty}\implies\text{the car will move}
-$$
-now let&rsquo;s write the contrapositive form</p>
-<p>$$
-\neg\text{ (the car will move)}\implies\neg\text{ (The fuel tank is not empty)}
-$$
-let&rsquo;s simplify it
-$$
-\text{ the car doesn&rsquo;t move}\implies\text{ The fuel tank is empty}
-$$</p>
-<p>&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..</p>
-<p>Okay now after we make everything clear we can prove our theorem :</p>
+<p>Now let&rsquo;s prove our theorem :</p>
 <p>We have
 $$n^2\text{  is even } \implies n \text{ is even}  $$
 By using the contrapositive form
@@ -282,7 +268,6 @@ we are going to do exactly the same</p>
 </li>
 </ul>
 <blockquote>
-<p><strong>1 goal</strong></p>
 <p><strong>n</strong> : ℕ</p>
 <p><strong>h</strong> : Even (n ^ 2)</p>
 <p><strong>k</strong> : ℕ</p>
@@ -324,7 +309,14 @@ we are going to do exactly the same</p>
 </ul>
 </li>
 </ul>
-<p>Let&rsquo;s see the info view to check our progress</p>
+<p>Let&rsquo;s see the info view to check our progress put the cursor on newline after the previous code</p>
+<blockquote>
+<p><strong>n</strong> : ℕ</p>
+<p><strong>h</strong> : Even (n ^ 2)</p>
+<p><strong>k</strong> : ℕ</p>
+<p><strong>hk</strong> : n = 2 * k + 1</p>
+<p><strong>h&rsquo;</strong> : Odd (n ^ 2)</p>
+<p><strong>⊢</strong> False</p></blockquote>
 ]]></content:encoded>
     </item>
     <item>

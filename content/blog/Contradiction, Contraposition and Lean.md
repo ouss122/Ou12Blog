@@ -3,7 +3,7 @@ author = "by Oussama"
 title = "Contradiction, Contraposition and Lean"
 date = "2025-09-01"
 math = true
-description = "Deep dive to some methods of proofs and their formalization with lean"
+description = "Deep dive to some methods of proving theorems with an introduction to Lean theorem prover"
 tags = [
     "lean",
     "math",
@@ -77,29 +77,9 @@ We have a fact that say if $P\implies Q$ then it is the same as $\neg Q\implies 
 
 More mathematically we can say that $P\implies Q$ is equivalent to $\neg Q\implies\neg P$ , so instead of proving the first we can prove the second one
 
-That's a lot of information!, let's build it bit by bit :
-
 The $\neg$ symbol mean "the negation" or "the opposite" so if $P$ is True, the negation of $P$ (which is $\neg P$) is False.
 
-Okay now let's take an example to explain that equivalence:
-
-
-$$
-\text{The fuel tank is not empty}\implies\text{the car will move}
-$$
-now let's write the contrapositive form
-
-$$
-\neg\text{ (the car will move)}\implies\neg\text{ (The fuel tank is not empty)}
-$$
-let's simplify it
-$$
-\text{ the car doesn't move}\implies\text{ The fuel tank is empty}
-$$
-
-........................................................
-
-Okay now after we make everything clear we can prove our theorem :
+Now let's prove our theorem :
 
 We have 
 $$n^2\text{  is even } \implies n \text{ is even}  $$
@@ -345,8 +325,8 @@ we are going to do exactly the same
 - The `have` tactic allow us to introduce new hypothesis but we need to prove it, we introduce the hypothesis `h'` which say $n^2$ is Odd by using the newly obtained hypothesis `hk`.
 
   If you place the cursor after the `by` keyword you can see that goal change in the info view
->   **1 goal**
-> 
+
+
 > **n** : ℕ
 > 
 > **h** : Even (n ^ 2)
@@ -377,7 +357,19 @@ we are going to do exactly the same
      - We can prove this kind of algebraic simplification easily by using the `ring` tactic as shown in the code above
      - And like that we successfully proved that `n^2 = 2*(2*k^2 +2*k) + 1` which is exactly our goal needed to prove the hypothesis `h'`
 
-Let's see the info view to check our progress
+Let's see the info view to check our progress put the cursor on newline after the previous code
+
+> **n** : ℕ
+> 
+> **h** : Even (n ^ 2)
+> 
+> **k** : ℕ
+> 
+> **hk** : n = 2 * k + 1
+> 
+> **h'** : Odd (n ^ 2)
+> 
+> **⊢** False
 
 
 
