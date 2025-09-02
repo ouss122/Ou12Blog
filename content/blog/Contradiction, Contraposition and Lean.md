@@ -449,7 +449,7 @@ contradiction
 
 
 
-### Extra
+## Extra
 
 Here the full code for the proof by contrapositive
 
@@ -503,7 +503,7 @@ $$
 
 
 
-### The End
+## The End
 If you enjoyed using lean and want to learn more about it make sure to visit [Learning Lean 4](https://leanprover-community.github.io/learn.html) where you can find some of the excellent learning resources
 
 
