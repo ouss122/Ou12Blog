@@ -409,6 +409,38 @@ and voila
 
 The goal is closed and by that we proved the theorem by contradiction
 
+here the full code 
+
+```lean4
+import Mathlib
+
+example {n : ℕ} (h : Even (n ^ 2)) : Even (n):= by
+
+by_contra hneg
+
+apply Nat.not_even_iff_odd.1 at hneg
+
+unfold Odd at hneg
+
+obtain ⟨ k,hk⟩ := hneg
+
+have h': Odd (n^2) := by
+
+unfold Odd
+
+use (2*k^2 +2*k)
+
+calc
+
+n^2 = (2*k +1)^2 := by rw [hk]
+
+_ = 2*(2*k^2 +2*k) + 1 := by ring
+
+apply Nat.not_odd_iff_even.2 at h
+
+contradiction
+```
+
 
 If you like this article and want to see more consider doing a small [donation](https://ko-fi.com/ou122)
 
