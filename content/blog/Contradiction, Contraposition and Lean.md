@@ -149,7 +149,7 @@ Our goal was to prove that
 $$
 n^2\text{ is even} \implies {n\text{ is even}}
 $$
-which we did using [contrapositive](#b-proof-by-contrapositive) and [contradiction](#c-proof-by-contradiction) methods, Now we will write those two proofs in Lean
+which we did using [contrapositive](#b-proof-by-contrapositive) and [contradiction](#c-proof-by-contradiction) methods, Now we will write the proof by contradiction in lean
 
 To use Lean you can either [install](https://leanprover-community.github.io/get_started.html) it locally or use the [lean4web](https://live.lean-lang.org/#codez=JYWwDg9gTgLgBAWQIYwBYBtgCMBQOCmAHkuOvnAN4B2cAXHICSEAvnABSp1wCiAbvjaxoA9OACYAlOM69+bKuNoBeOFgCeOOHADO0KKqA) online version
 
@@ -203,7 +203,7 @@ The 8th line have the keyword `sorry` which mean "sorry we don't have proof yet 
 Now let's try to prove it using our previous knowledge
 
 
-### A) Proof by Contradiction
+### Proof by Contradiction
 
 ```lean4
 import Mathlib
