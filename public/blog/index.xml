@@ -430,6 +430,7 @@ $$</p>
 <p><strong>n</strong> : ℕ</p>
 <p><strong>h</strong> : Odd n</p>
 <p><strong>⊢</strong> Odd (n ^ 2)</p></blockquote>
+<h3 id="the-end">The End</h3>
 <p>If you enjoyed using lean and want to learn more about it make sure to visit <a href="https://leanprover-community.github.io/learn.html">Learning Lean 4</a> where you can find some of the excellent learning resources</p>
 <p>If you like this article and want to see more consider doing a small <a href="https://ko-fi.com/ou122">donation</a></p>
 <p>Follow me on <a href="https://x.com/Ouss12222">X</a></p>
