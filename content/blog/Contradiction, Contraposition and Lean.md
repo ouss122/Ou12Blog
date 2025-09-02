@@ -155,7 +155,7 @@ To use Lean you can either [install](https://leanprover-community.github.io/get_
 
 For this tutorial we are going to use the [online](https://live.lean-lang.org/#codez=JYWwDg9gTgLgBAWQIYwBYBtgCMBQOCmAHkuOvnAN4B2cAXHICSEAvnABSp1wCiAbvjaxoA9OACYAlOM69+bKuNoBeOFgCeOOHADO0KKqA) version, open the link and you will get this:
 
-![d](/images/a.png)
+![lean online editor](https://i.ibb.co/5x5s8zGy/a.png)
 
 The left-hand side is where you type the code (or the proof in our case) and the right-hand side is called the **Info view** where Lean will display all the important information (e.g. hypothesis, goals, errors, suggestions, ...)
 

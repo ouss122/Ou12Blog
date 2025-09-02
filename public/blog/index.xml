@@ -106,7 +106,7 @@ $$
 which we did using <a href="/blog/contradiction-contraposition-and-lean/#b-proof-by-contrapositive">contrapositive</a> and <a href="/blog/contradiction-contraposition-and-lean/#c-proof-by-contradiction">contradiction</a> methods, Now we will write the proof by contradiction in lean</p>
 <p>To use Lean you can either <a href="https://leanprover-community.github.io/get_started.html">install</a> it locally or use the <a href="https://live.lean-lang.org/#codez=JYWwDg9gTgLgBAWQIYwBYBtgCMBQOCmAHkuOvnAN4B2cAXHICSEAvnABSp1wCiAbvjaxoA9OACYAlOM69&#43;bKuNoBeOFgCeOOHADO0KKqA">lean4web</a> online version</p>
 <p>For this tutorial we are going to use the <a href="https://live.lean-lang.org/#codez=JYWwDg9gTgLgBAWQIYwBYBtgCMBQOCmAHkuOvnAN4B2cAXHICSEAvnABSp1wCiAbvjaxoA9OACYAlOM69&#43;bKuNoBeOFgCeOOHADO0KKqA">online</a> version, open the link and you will get this:</p>
-<p><img src="/images/a.png" alt="d"></p>
+<p><img src="https://i.ibb.co/5x5s8zGy/a.png" alt="lean online editor"></p>
 <p>The left-hand side is where you type the code (or the proof in our case) and the right-hand side is called the <strong>Info view</strong> where Lean will display all the important information (e.g. hypothesis, goals, errors, suggestions, &hellip;)</p>
 <p>Now back to the code:</p>
 
