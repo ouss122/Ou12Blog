@@ -453,7 +453,7 @@ contradiction
 
 Here the full code for the proof by contrapositive
 
-```
+```lean4
 import Mathlib
 
 example {n : ℕ} (h : Even (n ^ 2)) : Even (n):= by
@@ -471,16 +471,34 @@ example {n : ℕ} (h : Even (n ^ 2)) : Even (n):= by
 I want to keep the article small this why I can't explain it all, but here some tips:
 
 - `contrapose h` , as we did above in the proof by contrapositive we turn $P\implies Q$ into $\neg Q\implies\neg P$ and that exactly what `contrapose` tactic do it negate the hypothesis `h` and the goal and then swap their places, so before using `contrapose` tactic we have:
-> n : ℕ
-> h : Even (n ^ 2)
-> ⊢ Even n
-
-- and after using `contrapose` , we have:
-> n : ℕ
-> h : ¬Even n
-> ⊢ ¬Even (n ^ 2)
-
-
+> **n** : ℕ
+> 
+> **h** : Even (n ^ 2)
+> 
+> **⊢** Even n
+- and after using `contrapose` , we get:
+> **n** : ℕ
+> 
+> **h** : ¬Even n
+> 
+> **⊢** ¬Even (n ^ 2)
+- As you can notice the negate of hypothesis `h` become the goal and the negate of the goal become the hypothesis `h`
+- An important remark for the 6th line: using `apply` without specifying a hypothesis mean using it for the goal and the work of `apply` is reversed. So if the implication we want to use is $P\implies Q$ and our goal is Q using `apply` will turn the goal intro $P$ , and that exactly what happen here is our implication `Nat.not_even_iff_odd.2` 
+$$
+ \text{Odd }n\implies\neg\text{Even }n
+$$
+  which also work $n^2$
+  
+$$
+ \text{Odd }n^2\implies\neg\text{Even }n^2
+$$
+   - Notice that the goal is the same as the consequence of the above implication $\neg\text{Even }n^2$ ,so after applying the implication to our goal with this line of code `apply Nat.not_even_iff_odd.2` the goal became :
+>   **n** : ℕ
+> 
+> **h** : Odd n
+> 
+> **⊢** Odd (n ^ 2)
+  
 
 
 

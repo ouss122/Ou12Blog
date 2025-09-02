@@ -60,7 +60,7 @@
 <meta itemprop="name" content="Contradiction, Contraposition and Lean">
 <meta itemprop="description" content="Deep dive to some methods of proving theorems with an introduction to Lean theorem prover"><meta itemprop="datePublished" content="2025-09-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2025-09-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2960">
+<meta itemprop="wordCount" content="3114">
 
 <meta itemprop="image" content="http://localhost:1313/images/social_card_bg_hu_801b9265434f10ae.webp"/>
 
@@ -492,32 +492,50 @@ $$</p>
 
 
 
-<pre tabindex="0"><code>import Mathlib
-
-example {n : ℕ} (h : Even (n ^ 2)) : Even (n):= by
-  contrapose h
-  apply Nat.not_even_iff_odd.1 at h
-  apply Nat.not_even_iff_odd.2
-  obtain ⟨k,hk⟩ := h
-  use (2*k^2 + 2*k)
-  calc
-    n^2 = (2*k + 1)^2        := by rw [hk]
-    _   = 4*k^2 + 1 + 4*k    := by ring
-    _   = 2*(2*k^2 + 2*k) +1 := by ring</code></pre><p>I want to keep the article small this why I can&rsquo;t explain it all, but here some tips:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lean4" data-lang="lean4"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#ff6ac1">import</span> Mathlib
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#ff6ac1">example</span> <span style="color:#ff6ac1">{</span>n <span style="color:#ff6ac1">:</span> ℕ<span style="color:#ff6ac1">}</span> <span style="color:#ff6ac1">(</span>h <span style="color:#ff6ac1">:</span> Even <span style="color:#ff6ac1">(</span>n <span style="color:#ff5c57">^</span> <span style="color:#ff9f43">2</span><span style="color:#ff6ac1">))</span> <span style="color:#ff6ac1">:</span> Even <span style="color:#ff6ac1">(</span>n<span style="color:#ff6ac1">):</span><span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">by</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>  contrapose h
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>  apply Nat<span style="color:#ff5c57">.</span>not_even_iff_odd<span style="color:#ff5c57">.</span><span style="color:#ff9f43">1</span> <span style="color:#ff6ac1">at</span> h
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>  apply Nat<span style="color:#ff5c57">.</span>not_even_iff_odd<span style="color:#ff5c57">.</span><span style="color:#ff9f43">2</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>  <span style="color:#ff6ac1">obtain</span> <span style="color:#ff5c57">⟨</span>k<span style="color:#ff6ac1">,</span>hk<span style="color:#ff5c57">⟩</span> <span style="color:#ff6ac1">:</span><span style="color:#ff5c57">=</span> h
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>  use <span style="color:#ff6ac1">(</span><span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span>k<span style="color:#ff5c57">^</span><span style="color:#ff9f43">2</span> <span style="color:#ff5c57">+</span> <span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span>k<span style="color:#ff6ac1">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>  <span style="color:#ff6ac1">calc</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>    n<span style="color:#ff5c57">^</span><span style="color:#ff9f43">2</span> <span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">(</span><span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span>k <span style="color:#ff5c57">+</span> <span style="color:#ff9f43">1</span><span style="color:#ff6ac1">)</span><span style="color:#ff5c57">^</span><span style="color:#ff9f43">2</span>        <span style="color:#ff6ac1">:</span><span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">by</span> rw <span style="color:#ff6ac1">[</span>hk<span style="color:#ff6ac1">]</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    <span style="color:#ff5c57">_</span>   <span style="color:#ff5c57">=</span> <span style="color:#ff9f43">4</span><span style="color:#ff5c57">*</span>k<span style="color:#ff5c57">^</span><span style="color:#ff9f43">2</span> <span style="color:#ff5c57">+</span> <span style="color:#ff9f43">1</span> <span style="color:#ff5c57">+</span> <span style="color:#ff9f43">4</span><span style="color:#ff5c57">*</span>k    <span style="color:#ff6ac1">:</span><span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">by</span> ring
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    <span style="color:#ff5c57">_</span>   <span style="color:#ff5c57">=</span> <span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span><span style="color:#ff6ac1">(</span><span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span>k<span style="color:#ff5c57">^</span><span style="color:#ff9f43">2</span> <span style="color:#ff5c57">+</span> <span style="color:#ff9f43">2</span><span style="color:#ff5c57">*</span>k<span style="color:#ff6ac1">)</span> <span style="color:#ff5c57">+</span><span style="color:#ff9f43">1</span> <span style="color:#ff6ac1">:</span><span style="color:#ff5c57">=</span> <span style="color:#ff6ac1">by</span> ring</span></span></code></pre></div><p>I want to keep the article small this why I can&rsquo;t explain it all, but here some tips:</p>
 <ul>
 <li><code>contrapose h</code> , as we did above in the proof by contrapositive we turn $P\implies Q$ into $\neg Q\implies\neg P$ and that exactly what <code>contrapose</code> tactic do it negate the hypothesis <code>h</code> and the goal and then swap their places, so before using <code>contrapose</code> tactic we have:</li>
 </ul>
 <blockquote>
-<p>n : ℕ
-h : Even (n ^ 2)
-⊢ Even n</p></blockquote>
+<p><strong>n</strong> : ℕ</p>
+<p><strong>h</strong> : Even (n ^ 2)</p>
+<p><strong>⊢</strong> Even n</p></blockquote>
 <ul>
-<li>and after using <code>contrapose</code> , we have:</li>
+<li>and after using <code>contrapose</code> , we get:</li>
 </ul>
 <blockquote>
-<p>n : ℕ
-h : ¬Even n
-⊢ ¬Even (n ^ 2)</p></blockquote>
+<p><strong>n</strong> : ℕ</p>
+<p><strong>h</strong> : ¬Even n</p>
+<p><strong>⊢</strong> ¬Even (n ^ 2)</p></blockquote>
+<ul>
+<li>As you can notice the negate of hypothesis <code>h</code> become the goal and the negate of the goal become the hypothesis <code>h</code></li>
+<li>An important remark for the 6th line: using <code>apply</code> without specifying a hypothesis mean using it for the goal and the work of <code>apply</code> is reversed. So if the implication we want to use is $P\implies Q$ and our goal is Q using <code>apply</code> will turn the goal intro $P$ , and that exactly what happen here is our implication <code>Nat.not_even_iff_odd.2</code>
+$$
+\text{Odd }n\implies\neg\text{Even }n
+$$
+which also work $n^2$</li>
+</ul>
+<p>$$
+\text{Odd }n^2\implies\neg\text{Even }n^2
+$$</p>
+<ul>
+<li>Notice that the goal is the same as the consequence of the above implication $\neg\text{Even }n^2$ ,so after applying the implication to our goal with this line of code <code>apply Nat.not_even_iff_odd.2</code> the goal became :</li>
+</ul>
+<blockquote>
+<p><strong>n</strong> : ℕ</p>
+<p><strong>h</strong> : Odd n</p>
+<p><strong>⊢</strong> Odd (n ^ 2)</p></blockquote>
 <p>If you enjoyed using lean and want to learn more about it make sure to visit <a href="https://leanprover-community.github.io/learn.html">Learning Lean 4</a> where you can find some of the excellent learning resources</p>
 <p>If you like this article and want to see more consider doing a small <a href="https://ko-fi.com/ou122">donation</a></p>
 <p>Follow me on <a href="https://x.com/Ouss12222">X</a></p>
